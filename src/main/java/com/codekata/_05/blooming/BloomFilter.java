@@ -7,27 +7,24 @@ import java.security.NoSuchAlgorithmException;
 import java.util.BitSet;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Hex;
+
 import com.codekata._04.datamunging.DataReader;
 
 public class BloomFilter {
-	int bitSetLength = 65536;
+	int bitSetLength = 2147483647;
 	BitSet bitSet = new BitSet(bitSetLength);
 	List<String> words = null;
-	//create an array and initialize with zeros
+	
 	public BloomFilter() {
-		//initializeBitSet();
-		printBitSet();
+		//printBitSet();
 		words = getWords();
 		storeHashesToArray();
 	}
 	
-//	private void initializeBitSet() {
-//		bitSet.set(0, 1023, false);
-//	}
-	
 	//hash all our source data
 	private List<String> getWords(){
-		DataReader dataReader = new DataReader("wordlist.txt");
+		DataReader dataReader = new DataReader("cwordlist.txt");
 		List<String> words = dataReader.getLines();
 		return words;
 	}
@@ -46,12 +43,15 @@ public class BloomFilter {
 		for(String word : words) {
 			byte[] byteHash = md.digest(word.getBytes());
 			
-			for(int i = 0; i < 16; i+=2) {
-				ByteBuffer bb = ByteBuffer.allocate(2);
+			for(int i = 0; i < 16; i+=4) {
+				ByteBuffer bb = ByteBuffer.allocate(4);
 				bb.order(ByteOrder.LITTLE_ENDIAN);
 				bb.put(byteHash[i]);
 				bb.put(byteHash[i + 1]);
-				int s = bb.getShort(0) & 0xffff;
+				bb.put(byteHash[i + 2]);
+				bb.put(byteHash[i + 3]);
+				int s = bb.getInt(0);
+				s = Math.abs(s);
 				bitSet.set(s, true);
 			}
 		}
@@ -61,18 +61,60 @@ public class BloomFilter {
 	
 	public void printBitSet() {
 		
+		int trueCounter = 0, falseCounter = 0;
+		
 		for(int i = 0; i < bitSetLength; i++) {
+			
 			if(bitSet.get(i)) {
-				System.out.println(1);
+				trueCounter++;
 			}else {
-				System.out.println(0);
+				falseCounter++;
+			}
+		
+		}
+		System.out.println("trueCounter: " + trueCounter);
+		System.out.println("falseCounter: " + falseCounter);
+
+	}
+	
+	//search input
+	public boolean search(String searchParam) {
+		MessageDigest md = getDigestor();
+		boolean exist = true;
+		byte[] searchParamHash = md.digest(searchParam.getBytes());
+	
+		System.out.println(Hex.encodeHexString(searchParamHash));
+		
+		for(int i = 0; i < 16; i+=4) {
+			ByteBuffer bb = ByteBuffer.allocate(4);
+			bb.order(ByteOrder.LITTLE_ENDIAN);
+			bb.put(searchParamHash[i]);
+			bb.put(searchParamHash[i + 1]);
+			bb.put(searchParamHash[i + 2]);
+			bb.put(searchParamHash[i + 3]);
+			int s = bb.getInt(0);
+			s = Math.abs(s);
+			if(!bitSet.get(s)) {
+				return false;
 			}
 		}
 		
-		System.out.println();
+		return exist;
+	}
+	
+	private MessageDigest getDigestor() {
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return md;
 	}
 	
 	//hash search input
+	
 	
 	//verify bits in bit array
 	

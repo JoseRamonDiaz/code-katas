@@ -1,12 +1,42 @@
 package com.jrdadev.warmingup;
 
-import com.jrdadev.katas.BinarySearch;
-
 public class Main {
+		
+	public static <T> void genericMethod(T[] array){
+		for(T obj : array) {
+			System.out.printf("%s ", obj);
+		}
+		System.out.println("");
+	}
+	
+	public static <T extends Comparable<T>> T maximun(T x, T y, T z) {
+		T max = x;
+		
+		if(y.compareTo(max) > 0) {
+			max = y;
+		}
+		
+		if(z.compareTo(max) > 0) {
+			max = z;
+		}
+		
+		return z;
+	}
 
+	public class Box<T>{
+		private T t;
+		
+		public void add(T t){
+			this.t = t;
+		}
+	}
+	
 	public static void main(String[] args) {
-		BinarySearch bs = new BinarySearch();
-		bs.search(1, new int[] {0, 1, 2, 3});
+		Integer[] numArray = {1,2,3,4,5,6};
+		Character[] charArray = {'a', 'b'};
+		
+		genericMethod(numArray);
+		
 	}
 
 }
