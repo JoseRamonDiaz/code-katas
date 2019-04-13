@@ -15,8 +15,8 @@ public class Parser {
 	
 	public boolean areCorrectArgs(String fullCommand) throws IlegalCommandException {
 		String command = getCommand(fullCommand);
-		ArgsVerifierFactory argsVerifierFactory = new ArgsVerifierFactory();
-		ArgsVerifier argsVerifier = argsVerifierFactory.createArgsVerifier(CommandsList.valueOf(command.toUpperCase()));
+		CommandFactory argsVerifierFactory = new CommandFactory();
+		Command argsVerifier = argsVerifierFactory.createCommand(CommandsList.valueOf(command.toUpperCase()));
 		return argsVerifier.areCorrectArgs(getArgs(fullCommand));
 	}
 	
@@ -33,5 +33,11 @@ public class Parser {
 	
 	private String[] splitCommand(String fullCommand) {
 		return fullCommand.split(" ");
+	}
+
+	public String getHelp(String fullCommand) throws IlegalCommandException {
+		String command = getCommand(fullCommand);
+		CommandFactory commandFactory = new CommandFactory();
+		return commandFactory.createCommand(CommandsList.valueOf(command.toUpperCase())).getHelp();
 	}
 }

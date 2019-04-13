@@ -1,5 +1,6 @@
 package com.jrda.cli;
 
-public interface ArgsVerifier {
+public interface Command {
 	public boolean areCorrectArgs(String[] args);
+	public String getHelp();
 }

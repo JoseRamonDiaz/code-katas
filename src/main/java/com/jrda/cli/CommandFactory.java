@@ -1,8 +1,8 @@
 package com.jrda.cli;
 
-public class ArgsVerifierFactory {
+public class CommandFactory {
 	
-	public ArgsVerifier createArgsVerifier(CommandsList command) throws IlegalCommandException {
+	public Command createCommand(CommandsList command) throws IlegalCommandException {
 		switch(command) {
 		case ADD:
 			return new AddCommand();

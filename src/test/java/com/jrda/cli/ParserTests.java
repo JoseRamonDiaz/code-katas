@@ -48,4 +48,11 @@ public class ParserTests {
 		assertEquals("to.txt", args[1]);
 	}
 	
+	@Test
+	public void testGetHelp() throws IlegalCommandException {
+		Parser p = new Parser();
+		String fullCommand = "add --help";
+	 	String help = p.getHelp(fullCommand);
+	 	assertEquals(new AddCommand().getHelp(), help);
+	}
 }
