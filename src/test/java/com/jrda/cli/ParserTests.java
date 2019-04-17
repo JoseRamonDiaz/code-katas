@@ -7,6 +7,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.jrda.cli.bussiness_rules.AddCommand;
+import com.jrda.cli.bussiness_rules.BoundaryInterface;
+import com.jrda.cli.bussiness_rules.IlegalCommandException;
+import com.jrda.cli.bussiness_rules.Interactor;
+
 public class ParserTests {
 	
 	@Test

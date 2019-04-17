@@ -1,4 +1,4 @@
-package com.jrda.cli;
+package com.jrda.cli.bussiness_rules;
 
 public class UpdateCommand implements Command {
 	private String help = "update a file content \n"

@@ -1,4 +1,6 @@
-package com.jrda.cli;
+package com.jrda.cli.db;
+
+import com.jrda.cli.bussiness_rules.Command;
 
 public class EntityDbGatewayImp implements EntityDbGateway {
 

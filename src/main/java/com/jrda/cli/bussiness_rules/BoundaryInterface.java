@@ -1,4 +1,4 @@
-package com.jrda.cli;
+package com.jrda.cli.bussiness_rules;
 
 public interface BoundaryInterface {
 	public boolean existCommand(String command);

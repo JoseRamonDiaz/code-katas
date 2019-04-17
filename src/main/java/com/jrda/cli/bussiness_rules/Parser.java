@@ -1,6 +1,8 @@
-package com.jrda.cli;
+package com.jrda.cli.bussiness_rules;
 
 import java.util.Arrays;
+
+import com.jrda.cli.db.EntityDbGateway;
 
 public class Parser {
 	EntityDbGateway entityDbGateway;
