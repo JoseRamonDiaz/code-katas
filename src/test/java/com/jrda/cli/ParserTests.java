@@ -11,7 +11,7 @@ public class ParserTests {
 	
 	@Test
 	public void testCommandExistence() {
-		Parser p = new Parser();
+		BoundaryInterface p = new Interactor();
 		String command = "run";
 		assertTrue(p.existCommand(command));
 		
@@ -21,7 +21,7 @@ public class ParserTests {
 	
 	@Test
 	public void testParameterCorrectness() throws IlegalCommandException {
-		Parser p = new Parser();
+		BoundaryInterface p = new Interactor();
 		String fullCommand = "add from.txt to.txt";
 		assertTrue(p.areCorrectArgs(fullCommand));
 		
@@ -31,7 +31,7 @@ public class ParserTests {
 	
 	@Test
 	public void testGetCommand() {
-		Parser p = new Parser();
+		BoundaryInterface p = new Interactor();
 		String fullCommand = "add file.txt";
 		String command = p.getCommand(fullCommand);
 		assertEquals("add", command);
@@ -40,7 +40,7 @@ public class ParserTests {
 	
 	@Test
 	public void testGetArgs() {
-		Parser p = new Parser();
+		BoundaryInterface p = new Interactor();
 		String fullCommand = "add from.txt to.txt";
 		String[] args = p.getArgs(fullCommand);
 		assertEquals(2, args.length);
@@ -50,7 +50,7 @@ public class ParserTests {
 	
 	@Test
 	public void testGetHelp() throws IlegalCommandException {
-		Parser p = new Parser();
+		BoundaryInterface p = new Interactor();
 		String fullCommand = "add --help";
 	 	String help = p.getHelp(fullCommand);
 	 	assertEquals(new AddCommand().getHelp(), help);

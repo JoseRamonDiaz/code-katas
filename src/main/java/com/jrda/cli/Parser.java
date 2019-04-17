@@ -3,6 +3,7 @@ package com.jrda.cli;
 import java.util.Arrays;
 
 public class Parser {
+	EntityDbGateway entityDbGateway;
 	
 	public boolean existCommand(String command) {
 		for(CommandsList enumCommand: CommandsList.values()) {
