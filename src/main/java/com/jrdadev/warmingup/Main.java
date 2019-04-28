@@ -29,11 +29,14 @@ public class Main {
 		public void add(T t){
 			this.t = t;
 		}
+		
+		public T getT() {
+			return t;
+		}
 	}
 	
 	public static void main(String[] args) {
 		Integer[] numArray = {1,2,3,4,5,6};
-		Character[] charArray = {'a', 'b'};
 		
 		genericMethod(numArray);
 		
