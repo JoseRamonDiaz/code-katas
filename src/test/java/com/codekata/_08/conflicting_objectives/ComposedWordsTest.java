@@ -12,7 +12,7 @@ import com.codekata._04.datamunging.DataReader;
 public class ComposedWordsTest {
 	
 	@Test
-	public void testComposedWords() {
+	public void testDualComposedWords() {
 		List<String> diccionary = new DataReader("wordlist.txt").getLines();
 		ComposedWordChecker c = new DoualComposedWordChecker(diccionary);
 		assertTrue(c.isComposed("albums"));
