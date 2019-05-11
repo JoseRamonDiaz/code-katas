@@ -27,6 +27,7 @@ public class FileAnagramsChecker {
 	private void checkAnagrams() {
 		startTime = System.currentTimeMillis();
 		int wordsListSize = wordsList.size();
+		@SuppressWarnings("unchecked")
 		Map<Character, Integer>[] mapArray = new HashMap[wordsListSize];
 		System.out.println("Generating map...");
 		for(int i = 0; i < wordsListSize; i++) {
