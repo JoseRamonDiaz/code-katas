@@ -5,8 +5,10 @@ import java.util.Map;
 
 public class QuantityOferton implements Oferton {
 	Map<Character, Integer> productQuantity = new HashMap<>();
+	QuantityOfertonList qol;
 	
 	public QuantityOferton() {
+		qol = new QuantityOfertonList();
 		productQuantity.put('a', 0);
 		productQuantity.put('b', 0);
 		productQuantity.put('c', 0);
@@ -19,15 +21,9 @@ public class QuantityOferton implements Oferton {
 		Integer quantity = productQuantity.get(c);
 		productQuantity.put(c, quantity + 1);
 		
-		
-		if(productQuantity.get('a') == 3) {
-			productQuantity.put('a', 0);
-			return 0.20;
-		}
-		
-		if(productQuantity.get('b') == 2) {
-			productQuantity.put('b', 0);
-			return 0.15;
+		if(productQuantity.get(c) == qol.getQuantityToPriceOff(c)) {
+			productQuantity.put(c, 0);
+			return qol.getPriceOff(c);
 		}
 		
 		return 0;
