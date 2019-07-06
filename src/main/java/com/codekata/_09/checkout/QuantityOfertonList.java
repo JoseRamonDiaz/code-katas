@@ -8,9 +8,7 @@ public class QuantityOfertonList {
 	Map<Character, Double> priceoffList;
 	
 	public QuantityOfertonList() {
-		quantityOfertonList = new HashMap<>();
-		quantityOfertonList.put('a', 3);
-		quantityOfertonList.put('b', 2);
+		quantityOfertonList = new QuantityOfertonManagerImpl().getQuantityOfertones();
 		
 		priceoffList = new HashMap<>();
 		priceoffList.put('a', 0.20);
