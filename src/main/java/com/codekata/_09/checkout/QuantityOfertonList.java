@@ -9,10 +9,7 @@ public class QuantityOfertonList {
 	
 	public QuantityOfertonList() {
 		quantityOfertonList = new QuantityOfertonManagerImpl().getQuantityOfertones();
-		
-		priceoffList = new HashMap<>();
-		priceoffList.put('a', 0.20);
-		priceoffList.put('b', 0.15);
+		priceoffList = new PriceOffManagerImpl().getPriceOffList();
 	}
 	
 	public Integer getQuantityToPriceOff(Character product) {
