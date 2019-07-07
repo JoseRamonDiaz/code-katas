@@ -1,0 +1,4 @@
+ //this is a 3 lines file
+ public interface Dave{
+    int countLines (File inFile);
+ }
