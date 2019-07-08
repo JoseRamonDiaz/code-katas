@@ -1,10 +1,6 @@
 package com.codekata._13.counting_loc;
 
-import com.jrdadev.katas.StreamReduce;
 import junit.framework.TestCase;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 
 public class LocMatcherTest extends TestCase {
@@ -21,10 +17,20 @@ public class LocMatcherTest extends TestCase {
         assertTrue(locMatcher.isSingleLineComment("//this is a comment      "));
     }
 
-    public void testMultilineCommentStart() throws Exception{
-        assertTrue(locMatcher.isMultilineCommentStart("/*this is a start of multiline comment*/"));
-        assertTrue(locMatcher.isMultilineCommentStart("/*this is a start of multiline comment*/     "));
-        assertTrue(locMatcher.isMultilineCommentStart("     /*this is a start of multiline comment*/"));
-        assertFalse(locMatcher.isMultilineCommentStart("/*this is a start of multiline comment*/something else"));
+    public void testMultilineCommentInline() throws Exception{
+        assertTrue(locMatcher.isMultilineCommentInLine("/*this is a start of multiline comment*/"));
+        assertTrue(locMatcher.isMultilineCommentInLine("/*this is a start of multiline comment*/     "));
+        assertTrue(locMatcher.isMultilineCommentInLine("     /*this is a start of multiline comment*/"));
+        assertFalse(locMatcher.isMultilineCommentInLine("/*this is a start of multiline comment*/something else"));
+    }
+
+    public void testMultiLineCommentStart()throws Exception{
+        assertTrue(locMatcher.isMultilineCommentStart("/*this is a start of multiline comment"));
+        assertFalse(locMatcher.isMultilineCommentStart("this is not a start of multiline comment"));
+    }
+
+    public void testMultiLineCommentEnd()throws Exception{
+        assertTrue(locMatcher.isMultilineCommentEnd("this is the end of multiline comment*/"));
+        assertFalse(locMatcher.isMultilineCommentEnd("this is not the end of multiline comment"));
     }
 }

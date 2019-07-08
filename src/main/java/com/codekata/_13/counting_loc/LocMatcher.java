@@ -6,7 +6,15 @@ public class LocMatcher {
         return line.matches("^\\s*\\/\\/.*");
     }
 
-    public boolean isMultilineCommentStart(String line){
+    public boolean isMultilineCommentInLine(String line){
         return line.matches("^\\s*\\/\\*.*\\*\\/\\s*$");
+    }
+
+    public boolean isMultilineCommentStart(String line){
+        return line.matches("^\\s*\\/\\*.*");
+    }
+
+    public boolean isMultilineCommentEnd(String line) {
+        return line.matches(".*\\*\\/");
     }
 }

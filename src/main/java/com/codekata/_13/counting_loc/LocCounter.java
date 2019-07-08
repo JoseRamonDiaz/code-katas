@@ -11,9 +11,27 @@ public class LocCounter {
         List<String> lines = dataReader.getLines();
         LocMatcher locMatcher = new LocMatcher();
         int emptyLines = 0;
+        boolean multilineComment = false;
+
         for(String line : lines){
-            if(locMatcher.isSingleLineComment(line) || locMatcher.isMultilineCommentStart(line)) {
+            if(multilineComment){
+                if(locMatcher.isMultilineCommentEnd(line)){
+                    emptyLines++;
+                    multilineComment = false;
+                }else{
+                    emptyLines++;
+                    continue;
+                }
+            }
+
+            if(locMatcher.isSingleLineComment(line) || locMatcher.isMultilineCommentInLine(line)) {
                 emptyLines++;
+                continue;
+            }
+
+            if(locMatcher.isMultilineCommentStart(line)){
+                emptyLines++;
+                multilineComment = true;
             }
         }
         return lines.size() - emptyLines;
