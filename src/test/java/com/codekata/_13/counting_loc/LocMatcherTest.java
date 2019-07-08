@@ -17,10 +17,14 @@ public class LocMatcherTest extends TestCase {
     public void testSingleLineComment() throws Exception{
         assertTrue(locMatcher.isSingleLineComment("//this is a comment"));
         assertTrue(locMatcher.isSingleLineComment("//"));
+        assertTrue(locMatcher.isSingleLineComment("    //this is a comment"));
+        assertTrue(locMatcher.isSingleLineComment("//this is a comment      "));
     }
 
     public void testMultilineCommentStart() throws Exception{
         assertTrue(locMatcher.isMultilineCommentStart("/*this is a start of multiline comment*/"));
+        assertTrue(locMatcher.isMultilineCommentStart("/*this is a start of multiline comment*/     "));
+        assertTrue(locMatcher.isMultilineCommentStart("     /*this is a start of multiline comment*/"));
         assertFalse(locMatcher.isMultilineCommentStart("/*this is a start of multiline comment*/something else"));
     }
 }

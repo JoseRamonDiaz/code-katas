@@ -12,7 +12,7 @@ public class LocCounter {
         LocMatcher locMatcher = new LocMatcher();
         int emptyLines = 0;
         for(String line : lines){
-            if(locMatcher.isSingleLineComment(line)) {
+            if(locMatcher.isSingleLineComment(line) || locMatcher.isMultilineCommentStart(line)) {
                 emptyLines++;
             }
         }

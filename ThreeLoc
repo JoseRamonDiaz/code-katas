@@ -1,4 +1,5 @@
- //this is a 3 lines file
+    //this is a 3 lines file
+    /*multi line comment*/
  public interface Dave{
     int countLines (File inFile);
  }
