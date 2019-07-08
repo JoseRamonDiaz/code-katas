@@ -3,6 +3,7 @@
     /*multi
     line
     comment*/
+
  public interface Dave{
     int countLines (File inFile);
  }
