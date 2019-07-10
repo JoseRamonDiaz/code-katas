@@ -8,7 +8,7 @@ public class TrigramTest {
 
     @Test
     public void testPairReader(){
-        PairReader pr = new PairReader();
+        PairReader pr = new PairReader("trigrams");
         assertEquals(4, pr.getPairsCount());
     }
 

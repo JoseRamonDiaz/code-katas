@@ -10,16 +10,25 @@ public class TrigramMap {
     private Map<String, List<String>> trigrams = new HashMap<>();
 
     public void add(String key, String valueToAdd){
-        //exist
-        if(trigrams.get(key) != null){
-            List<String> values = trigrams.get(key);
-            values.add(valueToAdd);
-            trigrams.put(key, values);
-        }else{//dont exist
-            List<String> newValue = new ArrayList<>();
-            newValue.add(valueToAdd);
-            trigrams.put(key, newValue);
+        boolean keyAlreadyExist = trigrams.get(key) != null;
+
+        if(keyAlreadyExist){
+            addToList(key, valueToAdd);
+        }else{
+            createList(key, valueToAdd);
         }
+    }
+
+    private void createList(String key, String valueToAdd) {
+        List<String> newValue = new ArrayList<>();
+        newValue.add(valueToAdd);
+        trigrams.put(key, newValue);
+    }
+
+    private void addToList(String key, String valueToAdd) {
+        List<String> values = trigrams.get(key);
+        values.add(valueToAdd);
+        trigrams.put(key, values);
     }
 
     public List<String> getValuesList(String key){
