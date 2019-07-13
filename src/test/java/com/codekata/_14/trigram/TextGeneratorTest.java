@@ -9,5 +9,7 @@ public class TextGeneratorTest {
 	public void testOneWordOption() {
 		TextGenerator tg = new TextGenerator();
 		assertEquals("i wish i", tg.getText("i wish", 1));
+		//assertEquals("i wish i", tg.getText("i wish", 2));
+		System.out.println(tg.getText("i wish", 2));
 	}
 }

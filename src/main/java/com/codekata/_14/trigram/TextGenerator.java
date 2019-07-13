@@ -5,9 +5,14 @@ public class TextGenerator {
 		String text = key;
 		PairReader pr = new PairReader("trigrams");
 		TrigramMap trigrams = pr.getTrigrams();
+		String last = key.split(" ")[1];
+		String penultimate = key.split(" ")[0];
 		
 		for(int i = 0; i < numberOfIterations; i++) {
-			text = text.concat(" " + trigrams.get(key));
+			String oldLast = last;
+			last = trigrams.get(penultimate + " " + last);
+			text = text.concat(" " + last);
+			penultimate = oldLast;
 		}
 		
 		return text;
