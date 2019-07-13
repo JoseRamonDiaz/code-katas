@@ -13,19 +13,34 @@ public class PairReader {
         trigrams = new TrigramMap();
         generateTrigrams(dr.getLines());
     }
+    
+    public TrigramMap getTrigrams() {
+    	return trigrams;
+    }
 
     public int getPairsCount(){
         return trigrams.size();
     }
 
     private void generateTrigrams(List<String> lines) {
-        for(String line : lines){
-            String[] words = line.split(" ");
+    	String superLine = concatLines(lines);
+    	
+        String[] words = superLine.split(" ");
 
-            for(int i = 0; i < words.length - 2; i++){
-                trigrams.add(words[i].toLowerCase() + " " + words[i + 1].toLowerCase(), words[i + 2]);
-            }
+        for(int i = 0; i < words.length - 2; i++){
+            trigrams.add(words[i].toLowerCase() + " " + words[i + 1].toLowerCase(), words[i + 2].toLowerCase());
         }
+        
+    }
+    
+    private String concatLines(List<String> lines) {
+    	String superLine = "";
+    	
+    	for(String line : lines) {
+    		superLine = superLine.concat(line + " ");
+    	}
+    	
+    	return superLine;
     }
 
 }

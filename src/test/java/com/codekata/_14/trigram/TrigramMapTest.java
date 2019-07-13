@@ -20,6 +20,7 @@ public class TrigramMapTest {
 
         trigramMap.add("b", "burro");
         assertEquals(1, trigramMap.getValuesList("b").size());
+        assertEquals("burro", trigramMap.get("b"));
         assertEquals(3, trigramMap.getValuesList("a").size());
     }
 }

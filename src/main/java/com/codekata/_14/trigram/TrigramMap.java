@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class TrigramMap {
 
@@ -18,6 +19,20 @@ public class TrigramMap {
             createList(key, valueToAdd);
         }
     }
+    
+    public String get(String key) {
+    	List<String> valuesList = getValuesList(key);
+    	int randomIndex = new Random().nextInt(valuesList.size());
+    	return valuesList.get(randomIndex);
+    }
+    
+    public List<String> getValuesList(String key){
+        return trigrams.get(key);
+    }
+
+    public int size(){
+        return trigrams.size();
+    }
 
     private void createList(String key, String valueToAdd) {
         List<String> newValue = new ArrayList<>();
@@ -29,14 +44,6 @@ public class TrigramMap {
         List<String> values = trigrams.get(key);
         values.add(valueToAdd);
         trigrams.put(key, values);
-    }
-
-    public List<String> getValuesList(String key){
-        return trigrams.get(key);
-    }
-
-    public int size(){
-        return trigrams.size();
     }
 
 }
