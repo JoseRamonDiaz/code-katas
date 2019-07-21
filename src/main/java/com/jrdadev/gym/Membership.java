@@ -5,7 +5,6 @@ import java.util.Date;
 public class Membership {
     private Date startDate;
 
-
     public Date getStartDate(){
         return startDate;
     }
