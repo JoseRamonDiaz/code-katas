@@ -8,6 +8,7 @@ public class TrigramTest {
 
     @Test
     public void testPairReader(){
+        //fixme need to change to use multiline
         PairReader pr = new PairReader("trigrams");
         assertEquals(4, pr.getPairsCount());
     }
