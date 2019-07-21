@@ -2,8 +2,6 @@ package com.codekata._14.trigram;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 
 public class TrigramMapTest {
@@ -20,6 +18,7 @@ public class TrigramMapTest {
 
         trigramMap.add("b", "burro");
         assertEquals(1, trigramMap.getValuesList("b").size());
+        assertEquals("burro", trigramMap.get("b"));
         assertEquals(3, trigramMap.getValuesList("a").size());
     }
 }
