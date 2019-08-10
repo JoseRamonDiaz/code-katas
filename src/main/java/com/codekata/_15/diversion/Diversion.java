@@ -1,24 +1,30 @@
 package com.codekata._15.diversion;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Diversion {
-    private String binaryString;
-    private int digits;
-    private String[] combinations;
+    private List<String> baseCase = new ArrayList<String>(){
+        {
+            add("0");
+            add("1");
+        }
+    };
 
-    public Diversion(String binStr, int digits){
-        binaryString = binStr;
-        this.digits = digits;
-        combinations = getCombinations();
+    public List<String> generateCombinations(int length) throws Exception {
+
+        if(length <= 0){
+            throw new Exception("String length need to be greatter than zero");
+        }
+
+        if(length == 1){
+            return baseCase;
+        }
+
+        for(int i = 0; i < length -1; i++){
+            baseCase = new ArrayUtils().duplicateAndAddZerosAndOnes(baseCase);
+        }
+
+        return baseCase;
     }
-
-    public int getCombinationsNumber(){
-       return combinations.length;
-    }
-
-    private String[] getCombinations(){
-        return binaryString.split("(?<=\\G.{"+ digits +"})");
-    }
-
 }
