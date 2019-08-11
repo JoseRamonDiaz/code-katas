@@ -19,7 +19,7 @@ public class DiversionTest {
         }, diversion.generateCombinations(1));
 
         assertEquals(new HashSet<>(){
-            {//todo we need to change to a set maybe, to make accept what ever the order is
+            {
                 add("00");
                 add("01");
                 add("11");
