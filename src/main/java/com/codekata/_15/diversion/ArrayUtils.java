@@ -1,12 +1,12 @@
 package com.codekata._15.diversion;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ArrayUtils {
-    List<String> duplicatedArrayList = new ArrayList<>();
+    private Set<String> duplicatedArrayList = new HashSet<>();
 
-    public List<String> duplicateAndAddZerosAndOnes(List<String> strings) {
+    public Set<String> duplicateAndAddZerosAndOnes(Set<String> strings) {
         for(String entry : strings){
             duplicatedArrayList.add(entry + "0");
             duplicatedArrayList.add(entry + "1");

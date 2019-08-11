@@ -1,17 +1,17 @@
 package com.codekata._15.diversion;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Diversion {
-    private List<String> baseCase = new ArrayList<String>(){
+    private Set<String> baseCase = new HashSet<>(){
         {
             add("0");
             add("1");
         }
     };
 
-    public List<String> generateCombinations(int length) throws Exception {
+    public Set<String> generateCombinations(int length) throws Exception {
 
         if(length <= 0){
             throw new Exception("String length need to be greatter than zero");
