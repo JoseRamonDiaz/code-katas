@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Diversion {
-    private Set<String> baseCase = new HashSet<>(){
-        {
-            add("0");
-            add("1");
-        }
-    };
 
     public Set<String> generateCombinations(int length) throws Exception {
+        Set<String> baseCase = new HashSet<>(){
+            {
+                add("0");
+                add("1");
+            }
+        };
 
         if(length <= 0){
             throw new Exception("String length need to be greatter than zero");
@@ -26,5 +26,17 @@ public class Diversion {
         }
 
         return baseCase;
+    }
+
+    public int getAdjacentOnes(Set<String> combinations) {
+        int adjacent = 0;
+
+        for(String s : combinations){
+            if(s.contains("11")){
+                adjacent++;
+            }
+        }
+
+        return adjacent;
     }
 }
