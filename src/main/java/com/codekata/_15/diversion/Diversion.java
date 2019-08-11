@@ -22,7 +22,7 @@ public class Diversion {
         }
 
         for(int i = 0; i < length -1; i++){
-            baseCase = new ArrayUtils().duplicateAndAddZerosAndOnes(baseCase);
+            baseCase = new SetUtils().duplicateAndAddZerosAndOnes(baseCase);
         }
 
         return baseCase;

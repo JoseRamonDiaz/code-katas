@@ -6,11 +6,11 @@ import java.util.HashSet;
 
 import static org.junit.Assert.assertEquals;
 
-public class ArrayUtilsTest {
+public class SetUtilsTest {
 
     @Test
     public void testDuplicateArray(){
-        ArrayUtils arrayUtils = new ArrayUtils();
+        SetUtils arrayUtils = new SetUtils();
 
         assertEquals(new HashSet<>() {
             {
