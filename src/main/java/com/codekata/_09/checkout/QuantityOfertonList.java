@@ -1,6 +1,5 @@
 package com.codekata._09.checkout;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class QuantityOfertonList {

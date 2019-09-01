@@ -12,14 +12,24 @@ public class DiversionTest {
     public void testCombinationsGeneration() throws Exception {
         Diversion diversion = new Diversion();
         assertEquals(new HashSet<>(){
-            {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
                 add("0");
                 add("1");
             }
         }, diversion.generateCombinations(1));
 
         assertEquals(new HashSet<>(){
-            {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
                 add("00");
                 add("01");
                 add("11");

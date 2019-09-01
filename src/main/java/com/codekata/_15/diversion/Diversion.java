@@ -7,7 +7,12 @@ public class Diversion {
 
     public Set<String> generateCombinations(int length) throws Exception {
         Set<String> baseCase = new HashSet<>(){
-            {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
                 add("0");
                 add("1");
             }

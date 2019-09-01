@@ -11,7 +11,7 @@ public class AVLTree {
 	}
 	
     public static class Node {
-        private Node left, right, parent;
+        private Node left, right;
         private int height = 1;
         private int value;
 
