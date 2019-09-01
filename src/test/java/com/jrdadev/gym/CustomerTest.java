@@ -11,7 +11,7 @@ public class CustomerTest {
     public void testGetMembership(){
         Customer c = new Customer();
         Membership m = new Membership();
-        Date expectedDate = new Date("7/17/19");
+        Date expectedDate = DateUtils.parse("7/17/19");
         m.setStartDate(expectedDate);
 
         c.setMembership(m);

@@ -11,7 +11,9 @@ public class MembershipTest {
     @Test
     public void testStartDateMembership(){
         Membership m = new Membership();
-        Date expectedDate = new Date("7/17/19");
+       
+		Date expectedDate = DateUtils.parse("7/17/19");
+		
         m.setStartDate(expectedDate);
 
         assertEquals(expectedDate, m.getStartDate());
