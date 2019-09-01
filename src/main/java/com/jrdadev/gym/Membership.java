@@ -4,29 +4,28 @@ import java.time.*;
 import java.util.Date;
 
 public class Membership {
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
-    public Date getStartDate(){
+    public LocalDate getStartDate(){
         return startDate;
     }
     
     public boolean isVigent() {
     	LocalDate today = DateUtils.dateToLocalDate(new Date());
-    	LocalDate endDateLocal = DateUtils.dateToLocalDate(endDate);
     	 
-    	if(endDateLocal.compareTo(today) >= 0) {
+    	if(endDate.compareTo(today) >= 0) {
     		return true;
     	}
     	
     	return false;
     }
 
-    public void setStartDate(Date startDate){
+    public void setStartDate(LocalDate startDate){
         this.startDate = startDate;
     }
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 

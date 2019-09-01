@@ -3,7 +3,7 @@ package com.jrdadev.gym;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -19,15 +19,15 @@ public class MembershipTest {
 
     @Test
     public void testStartDateMembership(){
-		Date expectedDate = DateUtils.parse("7/17/19");
+		LocalDate expectedDate = LocalDate.parse("2019-07-17");
         m.setStartDate(expectedDate);
         assertEquals(expectedDate, m.getStartDate());
     }
     
     @Test
     public void isNotVigentTest() {
-    	Date startDate = DateUtils.parse("7/17/19");
-    	Date endDate = DateUtils.parse("8/16/19");
+    	LocalDate startDate = LocalDate.parse("2019-07-17");
+    	LocalDate endDate = LocalDate.parse("2019-08-16");
     	m.setStartDate(startDate);
     	m.setEndDate(endDate);
     	
@@ -36,8 +36,8 @@ public class MembershipTest {
 
     @Test
     public void isVigentTest() {
-    	Date startDate = DateUtils.parse("7/17/19");
-    	Date endDate = DateUtils.parse("9/16/19");
+    	LocalDate startDate = LocalDate.parse("2019-07-17");
+    	LocalDate endDate = LocalDate.parse("2019-09-16");
     	m.setStartDate(startDate);
     	m.setEndDate(endDate);
     	
@@ -46,8 +46,8 @@ public class MembershipTest {
     
     @Test
     public void lastVigentDayTest() {
-    	Date startDate = DateUtils.parse("7/17/19");
-    	Date endDate = DateUtils.parse("8/31/19");
+    	LocalDate startDate = LocalDate.parse("2019-07-17");
+    	LocalDate endDate = LocalDate.parse("2019-08-31");
     	m.setStartDate(startDate);
     	m.setEndDate(endDate);
     	

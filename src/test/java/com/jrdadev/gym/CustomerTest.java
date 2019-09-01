@@ -2,7 +2,7 @@ package com.jrdadev.gym;
 
 import org.junit.Test;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ public class CustomerTest {
     public void testGetMembership(){
         Customer c = new Customer();
         Membership m = new Membership();
-        Date expectedDate = DateUtils.parse("7/17/19");
+        LocalDate expectedDate = LocalDate.parse("7/17/19");
         m.setStartDate(expectedDate);
 
         c.setMembership(m);
