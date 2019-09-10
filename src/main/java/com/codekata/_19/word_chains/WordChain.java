@@ -8,10 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class WordChain {
+    WordUtils wordUtils;
     private String diccionaryFilePath = "wordlist.txt";
     private List<String> diccionary;
 
     public WordChain(){
+        wordUtils = new WordUtils();
         diccionary = new DataReader(diccionaryFilePath).getLines();
     }
 
@@ -29,8 +31,8 @@ public class WordChain {
         String currentComparingWord = start;
 
         for(String w : diccionary){
-            if(isWCloserToEnd(currentComparingWord, w, end)){
-                if(getDiff(w, end) > 1) {
+            if(wordUtils.isWCloserToEnd(currentComparingWord, w, end)){
+                if(wordUtils.getDiff(w, end) > 1) {
                     //if is not the end word
                     currentComparingWord = w;
                     wordChain.add(w);
@@ -43,28 +45,6 @@ public class WordChain {
             }
         }
         return Collections.emptyList();
-    }
-
-    protected boolean isWCloserToEnd(String currentWord, String comparingWord, String end){
-        if(currentWord.length() != comparingWord.length()){
-            return false;
-        }
-
-        return (getDiff(currentWord, comparingWord) <= 1) && isCloserThanCurrent(currentWord, comparingWord, end);
-    }
-
-    protected boolean isCloserThanCurrent(String currentWord, String comparingWord, String end) {
-        return getDiff(currentWord, end) > getDiff(comparingWord, end);
-    }
-
-    protected int getDiff(String a, String b){
-        int diffCounter = 0;
-        for(int i = 0; i < a.length(); i++){
-            if(a.charAt(i) != b.charAt(i)){
-                diffCounter++;
-            }
-        }
-        return diffCounter;
     }
 
     //we don't need entries with different lenght to the start word

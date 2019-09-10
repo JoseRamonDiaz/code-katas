@@ -34,30 +34,6 @@ public class WordChainsTest {
     }
 
     @Test
-    public void getDiffTest(){
-        assertEquals(1, wc.getDiff("cat", "cot"));
-        assertEquals(2, wc.getDiff("cat", "cod"));
-        assertEquals(1, wc.getDiff("cat", "caz"));
-        assertEquals(3, wc.getDiff("cat", "ddd"));
-        assertEquals(0, wc.getDiff("aaa", "aaa"));
-    }
-
-    @Test
-    public void isCloserTest(){
-        assertTrue( wc.isCloserThanCurrent("cat", "cag", "dog"));
-        assertFalse( wc.isCloserThanCurrent("cat", "cal", "dog"));
-        assertFalse( wc.isCloserThanCurrent("cat", "caz", "dog"));
-        assertTrue( wc.isCloserThanCurrent("cat", "cot", "dog"));
-        assertTrue(wc.isCloserThanCurrent("cot", "cog", "dog"));
-    }
-
-    @Test
-    public void isWCloserToEnd(){
-        assertTrue(wc.isWCloserToEnd("cat", "cot", "dog"));
-        assertTrue(wc.isWCloserToEnd("cot", "cog", "dog"));
-    }
-
-    @Test
     public void generateWordChainTest(){
         assertEquals(Arrays.asList("cat", "cot", "dot", "dog"), wc.getShortestWordChain("cat", "dog"));
     }
