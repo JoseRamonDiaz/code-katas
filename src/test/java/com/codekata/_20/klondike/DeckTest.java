@@ -2,8 +2,7 @@ package com.codekata._20.klondike;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class DeckTest {
     @Test
@@ -26,5 +25,20 @@ public class DeckTest {
         Card card = deck.getCard();
         assertNotNull(card);
         assertEquals(51, deck.size());
+    }
+
+    @Test
+    public void testShuffle(){
+        Deck deck = new Deck();
+        Deck deck1 = new Deck();
+
+        Card card = deck.getCard();
+        Card card1 = deck1.getCard();
+
+        boolean sameOrder = true;
+        for(int i = 0; i < 52; i++){
+            sameOrder = sameOrder && card.getType().equals(card1.getType()) && card.getValue().equals(card1.getValue());
+        }
+        assertFalse(sameOrder);
     }
 }

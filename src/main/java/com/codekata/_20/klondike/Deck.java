@@ -1,5 +1,6 @@
 package com.codekata._20.klondike;
 
+import java.util.Collections;
 import java.util.Stack;
 
 public class Deck {
@@ -47,5 +48,6 @@ public class Deck {
         for(CardValue cardValue : CardValue.values()){
             cardStack.push(new Card(cardType, cardValue));
         }
+        Collections.shuffle(cardStack);
     }
 }
