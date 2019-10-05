@@ -2,8 +2,7 @@ package com.codekata._20.klondike;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class FoundationPileTest {
 
@@ -11,12 +10,14 @@ public class FoundationPileTest {
     public void testAddFirstCardTrue(){
         FoundationPile foundation = new FoundationPile();
         assertTrue(foundation.add(new Card(CardType.DIAMONDS, CardValue.ACE)));
+        assertEquals(1, foundation.size());
     }
 
     @Test
     public void testAddFirstCardFalse(){
         FoundationPile foundation = new FoundationPile();
         assertFalse(foundation.add(new Card(CardType.DIAMONDS, CardValue.FIVE)));
+        assertEquals(0, foundation.size());
     }
 
     @Test
@@ -24,6 +25,7 @@ public class FoundationPileTest {
         FoundationPile foundation = new FoundationPile();
         assertTrue(foundation.add(new Card(CardType.DIAMONDS, CardValue.ACE)));
         assertTrue(foundation.add(new Card(CardType.DIAMONDS, CardValue.TWO)));
+        assertEquals(2, foundation.size());
     }
 
     @Test
@@ -38,5 +40,6 @@ public class FoundationPileTest {
         FoundationPile foundation = new FoundationPile();
         assertTrue(foundation.add(new Card(CardType.DIAMONDS, CardValue.ACE)));
         assertFalse(foundation.add(new Card(CardType.HEARTS, CardValue.TWO)));
+        assertEquals(1, foundation.size());
     }
 }

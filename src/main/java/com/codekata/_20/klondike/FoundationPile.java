@@ -24,6 +24,10 @@ public class FoundationPile {
         return false;
     }
 
+    public int size(){
+        return cardList.size();
+    }
+
     private boolean isNextHighest(Card card){
         return cardList.get(cardList.size() - 1).getValue().compareTo(card.getValue()) == -1;
     }
