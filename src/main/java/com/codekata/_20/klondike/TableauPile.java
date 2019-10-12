@@ -17,15 +17,25 @@ public class TableauPile {
 
     public boolean addCards(Deck subDeck) {
         Card cardIn = subDeck.peekCard();
-        Card tableauCard = this.deck.peekCard();
 
-        if(tableauCard.isNextHighest(cardIn) && tableauCard.isDifferentColor(cardIn)){
-            while(!subDeck.isEmpty()){
-                this.deck.addCard(subDeck.getCard());
+        if(this.deck.isEmpty()){
+            if(cardIn.getValue().equals(CardValue.KING)){
+                loadIntoDeck(subDeck);
+                return true;
+            } else {
+                return false;
             }
+        } else if(deck.peekCard().isNextHighest(cardIn) && deck.peekCard().isDifferentColor(cardIn)){
+            loadIntoDeck(subDeck);
             return true;
         }
 
         return false;
+    }
+
+    private void loadIntoDeck(Deck subDeck) {
+        while(!subDeck.isEmpty()){
+            this.deck.addCard(subDeck.getCard());
+        }
     }
 }

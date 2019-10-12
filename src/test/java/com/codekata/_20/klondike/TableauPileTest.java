@@ -70,6 +70,34 @@ public class TableauPileTest {
         assertEquals(3, movingCards.size());
     }
 
+    @Test
+    public void testRejectAddCardEmptyTableauPile(){
+        DeckForTesting deckForTesting = new DeckForTesting();
+        deckForTesting.setCardStack(new Stack<Card>());
+        TableauPile tableauPile = new TableauPile(deckForTesting);
+
+        DeckForTesting queenDeck = new DeckForTesting();
+        queenDeck.setCardStack(getOneCardStack(CardValue.QUEEN));
+        assertFalse(tableauPile.addCards(queenDeck));
+    }
+
+    @Test
+    public void testAddCardEmptyTableauPile(){
+        DeckForTesting deckForTesting = new DeckForTesting();
+        deckForTesting.setCardStack(new Stack<Card>());
+        TableauPile tableauPile = new TableauPile(deckForTesting);
+
+        DeckForTesting queenDeck = new DeckForTesting();
+        queenDeck.setCardStack(getOneCardStack(CardValue.KING));
+        assertTrue(tableauPile.addCards(queenDeck));
+    }
+
+    private Stack<Card> getOneCardStack(CardValue cardValue){
+        Stack<Card> cardStack = new Stack<>();
+        cardStack.push(new Card(CardType.PIKES, cardValue));
+        return cardStack;
+    }
+
     private Stack<Card> getCardStack123(){
         Stack<Card> cardStack = new Stack<>();
         cardStack.push(new Card(CardType.PIKES, CardValue.ACE));
