@@ -13,15 +13,15 @@ public class Card {
         return type;
     }
 
-    public void setType(CardType type) {
-        this.type = type;
-    }
-
     public CardValue getValue() {
         return value;
     }
 
-    public void setValue(CardValue value) {
-        this.value = value;
+    public boolean isNextHighest(Card card){
+        return this.getValue().compareTo(card.getValue()) == -1;
+    }
+
+    public boolean isSameSuit(Card card) {
+        return card.getType().equals(this.getType());
     }
 }

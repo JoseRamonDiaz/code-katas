@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class Deck {
-    private Stack<Card> cardStack = new Stack<>();
+    protected Stack<Card> cardStack = new Stack<>();
 
     public Deck() {
         init();
@@ -22,6 +22,14 @@ public class Deck {
 
     public Card getCard() {
         return cardStack.pop();
+    }
+
+    public void addCard(Card card){
+        cardStack.push(card);
+    }
+
+    public boolean isEmpty(){
+        return cardStack.isEmpty();
     }
 
     //this private constructor is used to not create the cardStack when it will be setted later

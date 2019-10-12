@@ -29,10 +29,10 @@ public class FoundationPile {
     }
 
     private boolean isNextHighest(Card card){
-        return cardList.get(cardList.size() - 1).getValue().compareTo(card.getValue()) == -1;
+        return cardList.get(cardList.size() - 1).isNextHighest(card);
     }
 
     private boolean isSameSuit(Card card) {
-        return card.getType().equals(cardList.get(0).getType());
+        return card.isSameSuit(cardList.get(0));
     }
 }
