@@ -58,4 +58,8 @@ public class Deck {
         }
         Collections.shuffle(cardStack);
     }
+
+    public Card peekCard() {
+        return cardStack.peek();
+    }
 }

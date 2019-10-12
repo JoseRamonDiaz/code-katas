@@ -41,4 +41,11 @@ public class DeckTest {
         }
         assertFalse(sameOrder);
     }
+
+    @Test
+    public void testPeekCard(){
+        Deck deck = new Deck();
+        assertNotNull(deck.peekCard());
+        assertEquals(52, deck.size());
+    }
 }

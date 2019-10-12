@@ -15,16 +15,17 @@ public class TableauPile {
         return deck.size();
     }
 
-    public void addCards(Deck subDeck) {
-        Card cardIn = subDeck.getCard();
-        Card tableauCard = this.deck.getCard();
+    public boolean addCards(Deck subDeck) {
+        Card cardIn = subDeck.peekCard();
+        Card tableauCard = this.deck.peekCard();
 
-        if(tableauCard.isNextHighest(cardIn)){
-            this.deck.addCard(tableauCard);
-            this.deck.addCard(cardIn);
+        if(tableauCard.isNextHighest(cardIn) && tableauCard.isDifferentColor(cardIn)){
             while(!subDeck.isEmpty()){
                 this.deck.addCard(subDeck.getCard());
             }
+            return true;
         }
+
+        return false;
     }
 }
