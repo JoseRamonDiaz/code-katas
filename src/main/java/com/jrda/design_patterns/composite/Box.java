@@ -12,7 +12,12 @@ public class Box implements Product {
         this.price = price;
     }
 
-    public void addProduct(Product p) {
+    public void addProduct(Product p) throws Exception {
+        //if the new product to add is this object, we should throw an exception
+        if(this == p) {
+            throw new Exception("We can't create a circular reference");
+        }
+
         if (productList == null) {
             productList = new ArrayList<>();
         }
