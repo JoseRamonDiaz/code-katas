@@ -19,7 +19,7 @@ public class Diversion {
         };
 
         if(length <= 0){
-            throw new Exception("String length need to be greatter than zero");
+            throw new Exception("String length need to be greater than zero");
         }
 
         if(length == 1){
