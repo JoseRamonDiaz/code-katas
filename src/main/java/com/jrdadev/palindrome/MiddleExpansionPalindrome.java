@@ -23,9 +23,6 @@ public class MiddleExpansionPalindrome implements Palindrome {
             throw new IllegalArgumentException("Boundaries need to be consecutive numbers");
         }
 
-        int cpLeft = left;
-        int cpRight = right;
-
         if (s.isEmpty()) {
             return 0;
         }
@@ -37,19 +34,12 @@ public class MiddleExpansionPalindrome implements Palindrome {
                 }
                 right++;
                 left--;
-            } else { //stop the search and we need to get back to the last pointers that were palindrome
-                //don't want to create a left bigger than right
-                //only update values if we changed'em before
-                if (right - left > 1 && right != cpRight && left != cpLeft) {
-                    right--;
-                    left++;
-                    //consecutive values in left and right
-                } else if (right - left == 1) {
+            } else {
+                if (right - left == 1) {
                     return 1;
+                } else {
+                    return getLen(++left, --right);
                 }
-
-
-                return getLen(left, right);
             }
         }
 

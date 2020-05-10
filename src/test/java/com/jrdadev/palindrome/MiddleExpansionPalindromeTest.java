@@ -1,7 +1,6 @@
 package com.jrdadev.palindrome;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,13 +13,12 @@ public class MiddleExpansionPalindromeTest {
       palindrome = new MiddleExpansionPalindrome();
    }
 
-    @Ignore
    @Test
     public void testLongestPalindrome() {
        //assertEquals(0, palindrome.maxPalSubStr(""));
-//       assertEquals(1, palindrome.maxPalSubStr("j"));
-//       assertEquals(4, palindrome.maxPalSubStr("abba"));
-//       assertEquals(6, palindrome.maxPalSubStr("cabbac"));
+       //assertEquals(1, palindrome.maxPalSubStr("j"));
+       assertEquals(4, palindrome.maxPalSubStr("abba"));
+       assertEquals(6, palindrome.maxPalSubStr("cabbac"));
        assertEquals(4, palindrome.maxPalSubStr("xyzwabba"));
    }
 
