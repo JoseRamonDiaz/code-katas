@@ -15,8 +15,8 @@ public class MiddleExpansionPalindromeTest {
 
    @Test
     public void testLongestPalindrome() {
-       //assertEquals(0, palindrome.maxPalSubStr(""));
-       //assertEquals(1, palindrome.maxPalSubStr("j"));
+       assertEquals(1, palindrome.maxPalSubStr(""));
+       assertEquals(1, palindrome.maxPalSubStr("j"));
        assertEquals(4, palindrome.maxPalSubStr("abba"));
        assertEquals(6, palindrome.maxPalSubStr("cabbac"));
        assertEquals(4, palindrome.maxPalSubStr("xyzwabba"));
@@ -24,7 +24,7 @@ public class MiddleExpansionPalindromeTest {
 
    @Test
     public void testPalindromeBounds() {
-       assertEquals(0, palindrome.maxPalStr("", 0, 0));
+       assertEquals(1, palindrome.maxPalStr("", 0, 0));
        assertEquals(1, palindrome.maxPalStr("a", 0, 0));
        assertEquals(1, palindrome.maxPalStr("abba", 0, 0));
        assertEquals(4, palindrome.maxPalStr("abba", 1, 2));

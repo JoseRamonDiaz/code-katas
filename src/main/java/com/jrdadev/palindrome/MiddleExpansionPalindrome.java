@@ -3,6 +3,10 @@ package com.jrdadev.palindrome;
 public class MiddleExpansionPalindrome implements Palindrome {
     @Override
     public int maxPalSubStr(String s) {
+        if (s.isEmpty() || s.length() == 1) {
+            return 1;
+        }
+
         int start = 0;
         int end = 0;
 
@@ -21,10 +25,6 @@ public class MiddleExpansionPalindrome implements Palindrome {
     protected int maxPalStr(String s, int left, int right) throws IllegalArgumentException {
         if (right - left > 1 || left > right) {
             throw new IllegalArgumentException("Boundaries need to be consecutive numbers");
-        }
-
-        if (s.isEmpty()) {
-            return 0;
         }
 
         while (left >= 0 && right < s.length()) {
