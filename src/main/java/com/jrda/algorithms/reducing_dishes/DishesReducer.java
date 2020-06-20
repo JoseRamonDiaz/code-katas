@@ -1,16 +1,15 @@
 package com.jrda.algorithms.reducing_dishes;
 
-import com.jrdadev.palindrome.Palindrome;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public class DishesReducer {
     public int maxSatisfaction(int[] satisfaction) {
         Arrays.sort(satisfaction);
 
-        List<Integer> negativeSatisfaction = getNegativeSatisfactions(satisfaction);
+        Stack<Integer> negativeSatisfaction = getNegativeSatisfactionsStack(satisfaction);
         List<Integer> nonNegativeSatisfaction = getNonNegativeSatisfactions(satisfaction);
         int baseSum = getSum(nonNegativeSatisfaction);
         int lastVal = getBaseProduct(nonNegativeSatisfaction);
@@ -21,7 +20,7 @@ public class DishesReducer {
             }
 
             //add the last negative satisfaction
-            baseSum += negativeSatisfaction.remove(negativeSatisfaction.size()-1);
+            baseSum += negativeSatisfaction.pop();
 
             //if the number is positive, the count should increase with that value. lastVal = newVal
             if (baseSum > 0) {
@@ -29,7 +28,7 @@ public class DishesReducer {
             } else {
                 return lastVal;
             }
-        } while (negativeSatisfaction.size() > 0);
+        } while (! negativeSatisfaction.isEmpty());
 
         return lastVal;
     }
@@ -51,6 +50,20 @@ public class DishesReducer {
         }
 
         return negativeSatisfaction;
+    }
+
+    public Stack<Integer> getNegativeSatisfactionsStack(int[] satisfaction) {
+        Stack<Integer> result = new Stack<>();
+
+        for (int value : satisfaction) {
+            if (value < 0) {
+                result.push(value);
+            } else {
+                break;
+            }
+        }
+
+        return result;
     }
 
     /**

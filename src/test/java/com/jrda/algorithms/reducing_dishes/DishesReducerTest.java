@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -49,6 +50,17 @@ public class DishesReducerTest {
         int[] ints = new int[]{-1,-8,0,5,-9};
         Arrays.sort(ints);
         assertEquals(Arrays.asList(-9, -8, -1), dishesReducer.getNegativeSatisfactions(ints));
+    }
+
+    @Test
+    public void testGetNegativeSatisfactionsStack() {
+        int[] ints = new int[]{-1,-8,0,5,-9};
+        Arrays.sort(ints);
+        Stack<Integer> integerStack = new Stack<>();
+        integerStack.push(-9);
+        integerStack.push(-8);
+        integerStack.push(-1);
+        assertEquals(integerStack, dishesReducer.getNegativeSatisfactionsStack(ints));
     }
 
     @Test
