@@ -22,22 +22,22 @@ public class Infix {
 	}
 
 	private String createResponse(List<String> operandList, List<String> operatorList) {
-		String response = "";
+		StringBuilder response = new StringBuilder();
 		for (String s : operandList) {
-			response += s + " ";
+			response.append(s).append(" ");
 		}
 
 		for (int i = operatorList.size() - 1; i >= 0; i--) {
-			response += operatorList.get(i) + " ";
+			response.append(operatorList.get(i)).append(" ");
 		}
-		return response.trim();
+		return response.toString().trim();
 	}
 
 	private List<String> getOperators(char[] charsInfix) {
 		List<String> operatorList = new ArrayList<>();
-		for (int i = 0; i < charsInfix.length; i++) {
-			if (!Character.isDigit(charsInfix[i])) {
-				operatorList.add(charsInfix[i] + "");
+		for (char infix : charsInfix) {
+			if (!Character.isDigit(infix)) {
+				operatorList.add(infix + "");
 			}
 		}
 		return operatorList;
