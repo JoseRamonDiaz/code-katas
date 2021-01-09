@@ -10,7 +10,7 @@ public class LightsGridApp {
 	private static void print(Light[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
-				if (matrix[i][j].isOn()) {
+				if (matrix[i][j].getBrightness() > 0) {
 					System.out.print("O");
 				} else {
 					System.out.print("-");

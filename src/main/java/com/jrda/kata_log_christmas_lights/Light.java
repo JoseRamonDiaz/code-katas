@@ -1,22 +1,23 @@
 package com.jrda.kata_log_christmas_lights;
 
 public class Light {
-	private boolean isOn = false;
+	private int brightness = 0;
 
 	public void on() {
-		isOn = true;
+		brightness++;
 	}
 
-	public boolean isOn() {
-		return isOn;
+	public int getBrightness() {
+		return brightness;
 	}
 
 	public void off() {
-		isOn = false;
+		if (brightness > 0)
+			brightness--;
 	}
 
 	public void toogle() {
-		isOn = !isOn;
+		brightness += 2;
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.jrda.kata_log_christmas_lights;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,23 +16,28 @@ public class LightTest {
 	@Test
 	public void testTurnOn() {
 		light.on();
-		assertTrue(light.isOn());
+		assertEquals(1, light.getBrightness());
 	}
 	
 	@Test
 	public void testTurnOff() {
 		light.off();
-		assertFalse(light.isOn());
+		assertEquals(0, light.getBrightness());
+		
+		light.on();
+		light.on();
+		light.off();
+		assertEquals(1, light.getBrightness());
 	}
 	
 	@Test
 	public void testToogle() {
 		light.off();
 		light.toogle();
-		assertTrue(light.isOn());
+		assertEquals(2, light.getBrightness());
 		
 		light.toogle();
-		assertFalse(light.isOn());
+		assertEquals(4, light.getBrightness());
 	}
 	
 }

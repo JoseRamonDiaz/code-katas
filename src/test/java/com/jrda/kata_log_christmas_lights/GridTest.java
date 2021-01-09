@@ -1,7 +1,6 @@
 package com.jrda.kata_log_christmas_lights;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
@@ -27,55 +26,49 @@ public class GridTest {
 	public void testOn() {
 		grid.on(0, 0, 1, 1);
 		Light[][] matrix = grid.getMatrix();
-		assertSquare(1, true, matrix);
+		assertSquare(0, 0, 1, 1, 1, matrix);
 		
 		grid.on(0, 0, 2, 2);
-		assertSquare(2, true, matrix);
+		assertSquare(0, 0, 1, 1, 2, matrix);
+		checkRow(2, 2, 1, matrix);
+		checkColum(2, 2, 1, matrix);
 	}
-	
+
+	private void checkColum(int column, int height, int expectedBrightness, Light[][] matrix) {
+		for (int i = 0; i < height; i++) {
+			assertEquals(expectedBrightness, matrix[i][column].getBrightness());
+		}
+	}
+
 	@Test
 	public void testOff() {
 		grid.on(0, 0, 999, 999);//turn on all lights
 		grid.off(0, 0, 1, 1);
 		Light[][] matrix = grid.getMatrix();
-		assertSquare(1, false, matrix);
+		assertSquare(0, 0, 1, 1, 0, matrix);
 		
 		grid.off(0, 0, 2, 2);
-		assertSquare(2, false, matrix);
+		assertSquare(0, 0, 2, 2, 0, matrix);
 	}
 	
 	@Test
 	public void testToggle() {
 		grid.toggle(0, 0, 1, 1);
 		Light[][] matrix = grid.getMatrix();
-		assertSquare(1, true, matrix);
-		
-		grid.toggle(0, 0, 1, 1);
-		assertOnlySquare(1, false, matrix);
-		
-		grid.toggle(0, 0, 2, 2);
-		assertSquare(2, true, matrix);
+		assertSquare(0, 0, 1, 1, 2, matrix);
 	}
-	
-	private void assertOnlySquare(int size, boolean b, Light[][] matrix) {
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) {
-				if (i <= size && j <= size) {
-					assertEquals(b, matrix[i][j].isOn());
-				}
+
+	private void assertSquare(int originX, int originY, int destX, int destY, int brightness, Light[][] matrix) {
+		for (int i = originX; i <= destX; i++) {
+    		for (int j = originY; j <= destY; j++) {
+				assertEquals(brightness, matrix[i][j].getBrightness());
 			}
 		}
 	}
-
-	private void assertSquare(int size, boolean b, Light[][] matrix) {
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) {
-				if (i <= size && j <= size) {
-					assertEquals(b, matrix[i][j].isOn());
-				} else {
-					assertNotEquals(b,matrix[i][j].isOn());
-				}
-			}
+	
+	private void checkRow(int row, int width, int expectedBrightness, Light[][] matrix) {
+		for (int i = 0; i < width; i++ ) {
+			assertEquals(expectedBrightness, matrix[row][i].getBrightness());
 		}
 	}
 }
