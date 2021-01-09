@@ -17,7 +17,7 @@ public class GridTest {
 	
 	@Test
 	public void testMatrix() {
-		boolean[][] matrix = grid.getMatrix();
+		Light[][] matrix = grid.getMatrix();
 		assertNotNull(matrix);
 		assertEquals(1000, matrix.length);
 		assertEquals(1000, matrix[0].length);
@@ -26,7 +26,7 @@ public class GridTest {
 	@Test
 	public void testOn() {
 		grid.on(0, 0, 1, 1);
-		boolean[][] matrix = grid.getMatrix();
+		Light[][] matrix = grid.getMatrix();
 		assertSquare(1, true, matrix);
 		
 		grid.on(0, 0, 2, 2);
@@ -37,7 +37,7 @@ public class GridTest {
 	public void testOff() {
 		grid.on(0, 0, 999, 999);//turn on all lights
 		grid.off(0, 0, 1, 1);
-		boolean[][] matrix = grid.getMatrix();
+		Light[][] matrix = grid.getMatrix();
 		assertSquare(1, false, matrix);
 		
 		grid.off(0, 0, 2, 2);
@@ -47,7 +47,7 @@ public class GridTest {
 	@Test
 	public void testToggle() {
 		grid.toggle(0, 0, 1, 1);
-		boolean[][] matrix = grid.getMatrix();
+		Light[][] matrix = grid.getMatrix();
 		assertSquare(1, true, matrix);
 		
 		grid.toggle(0, 0, 1, 1);
@@ -57,23 +57,23 @@ public class GridTest {
 		assertSquare(2, true, matrix);
 	}
 	
-	private void assertOnlySquare(int size, boolean b,boolean[][] matrix) {
+	private void assertOnlySquare(int size, boolean b, Light[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
 				if (i <= size && j <= size) {
-					assertEquals(b, matrix[i][j]);
+					assertEquals(b, matrix[i][j].isOn());
 				}
 			}
 		}
 	}
 
-	private void assertSquare(int size, boolean b,boolean[][] matrix) {
+	private void assertSquare(int size, boolean b, Light[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
 				if (i <= size && j <= size) {
-					assertEquals(b, matrix[i][j]);
+					assertEquals(b, matrix[i][j].isOn());
 				} else {
-					assertNotEquals(b,matrix[i][j]);
+					assertNotEquals(b,matrix[i][j].isOn());
 				}
 			}
 		}
