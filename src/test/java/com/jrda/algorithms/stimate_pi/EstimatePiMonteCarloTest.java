@@ -11,7 +11,7 @@ public class EstimatePiMonteCarloTest {
         double accumulatedDiffs = 0;
 
         for (int i = 0; i < numberOfOperations; i++) {
-            accumulatedDiffs += Math.abs(estimatePiMonteCarlo.estimatePi(1_000_000_000, -1d) - pi);
+            accumulatedDiffs += Math.abs(estimatePiMonteCarlo.estimatePi(1_000, -1d) - pi);
         }
 
         System.out.println(accumulatedDiffs/numberOfOperations);
