@@ -12,6 +12,7 @@ public class Grid {
 		toggleExecutor = new GridToggleExecutor();
 		
 		matrix = new Light[1000][1000];
+		
 		for (int i = 0; i < matrix.length; i++) {
     		for (int j = 0; j < matrix[0].length; j++) {
     			matrix[i][j] = new Light();
