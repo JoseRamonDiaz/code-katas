@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Wardrobe {
-	private Element e0;
-	private Element e1;
-	private Element e2;
-	private Element e3;
+	private final Element e0;
+	private final Element e1;
+	private final Element e2;
+	private final Element e3;
 	List<Element> eList;
 	
 	public Wardrobe() {
