@@ -18,7 +18,16 @@ public class ElementsPack {
 		this.elementsStack = s;
 	}
 
-	public void push(Element element) {
+	@SuppressWarnings("unchecked")
+    public ElementsPack(ElementsPack ep0, ElementsPack ep1) {
+		this.elementsStack = (Stack<Element>) ep0.elementsStack.clone();
+
+		for (Element element : ep1.elementsStack) {
+			this.elementsStack.push(element);
+		}
+    }
+
+    public void push(Element element) {
 		elementsStack.push(element);
 	}
 
@@ -88,6 +97,24 @@ public class ElementsPack {
 
 	public int getRemaining() {
 		return target - elementsStack.stream().mapToInt(Element::getSize).sum();
+	}
+
+	@Override
+	public String toString() {
+		String s = "[";
+		
+		Iterator<Element> iterator = elementsStack.iterator();
+		
+		while(iterator.hasNext()) {
+			s = s + " " + iterator.next().getSize();
+			if (iterator.hasNext()) {
+				s = s + ", ";
+			}
+		}
+		
+		s = s + "]";
+		
+		return s;
 	}
 	
 }
