@@ -68,4 +68,14 @@ public class ElementsPackTest {
 		ep0.push(new Element(50));
 		assertEquals(25, ep0.getRemaining());
 	}
+
+	@Test
+	public void testPrice() {
+		ElementsPack ep0 = new ElementsPack();
+		ep0.push(new Element(50, 59));
+		assertEquals(59, ep0.getPrice(), 0.001);
+
+		ep0.push(new Element(50, 59));
+		assertEquals(118, ep0.getPrice(), 0.001);
+	}
 }

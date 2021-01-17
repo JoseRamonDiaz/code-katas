@@ -116,5 +116,8 @@ public class ElementsPack {
 		
 		return s;
 	}
-	
+
+	public double getPrice() {
+		return elementsStack.stream().mapToDouble(Element::getPrice).sum();
+	}
 }

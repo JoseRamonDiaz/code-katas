@@ -78,6 +78,10 @@ public class WardrobeTest {
 		printList(epList);
 		assertFalse(epList.isEmpty());
 		assertTrue(expectedEpList.size() == epList.size() && expectedEpList.containsAll(epList) && epList.containsAll(expectedEpList));
+
+		ElementsPack cheapestElementsPack = w.getCheapestComb();
+		assertNotNull(cheapestElementsPack);
+		assertEquals(173, cheapestElementsPack.getPrice(), 0.001);
 	}
 
 	private void printList(List<ElementsPack> epList) {

@@ -4,9 +4,16 @@ import java.util.Objects;
 
 public class Element {
 	private final int size;
+	private final double price;
 
-	public Element(int size) {
+	protected Element(int size) {
 		this.size = size;
+		this.price = 0;
+	}
+
+	public Element(int size, double price) {
+		this.size = size;
+		this.price = price;
 	}
 
 	public int getSize() {
@@ -30,4 +37,7 @@ public class Element {
 		return size == other.size;
 	}
 
+	public double getPrice() {
+		return price;
+	}
 }

@@ -13,4 +13,13 @@ public class ElementTest {
 		Element e1 = new Element(2);
 		assertEquals(2, e1.getSize());
 	}
+
+	@Test
+	public void testElementPrice() {
+		Element e0 = new Element(50, 59d);
+		assertEquals(59, e0.getPrice(), 0.001);
+
+		Element e1 = new Element(75, 62d);
+		assertEquals(62, e1.getPrice(), 0.001);
+	}
 }

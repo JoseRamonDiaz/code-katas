@@ -11,10 +11,10 @@ public class Wardrobe {
 	List<Element> eList;
 	
 	public Wardrobe() {
-		e0 = new Element(50);
-		e1 = new Element(75);
-		e2 = new Element(100);
-		e3 = new Element(125);
+		e0 = new Element(50, 59);
+		e1 = new Element(75, 62);
+		e2 = new Element(100, 90);
+		e3 = new Element(125, 111);
 		
 		eList = new ArrayList<>();
 		eList.add(e0); 
@@ -77,5 +77,21 @@ public class Wardrobe {
 		combinations1.add(elementsPack3);
 
 		return combinations1;
+	}
+
+	public ElementsPack getCheapestComb() {
+		ElementsPack cheapestElementsPack = null;
+
+		for (ElementsPack ep : getCombinations()) {
+			if (cheapestElementsPack == null) {
+				cheapestElementsPack = ep;
+			}
+
+			if (ep.getPrice() < cheapestElementsPack.getPrice()) {
+				cheapestElementsPack = ep;
+			}
+		}
+
+		return cheapestElementsPack;
 	}
 }
