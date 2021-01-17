@@ -1,4 +1,4 @@
-package com.jrda.kata_log_christmas_lights;
+package com.jrda.kata_log.christmas_lights;
 
 public class Grid {
 	private Light[][] matrix;

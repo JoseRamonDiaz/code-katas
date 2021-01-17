@@ -1,4 +1,4 @@
-package com.jrda.kata_log_christmas.wardrobe;
+package com.jrda.kata_log.wardrobe;
 
 import java.util.ArrayList;
 import java.util.List;

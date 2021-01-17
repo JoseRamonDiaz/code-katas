@@ -1,4 +1,4 @@
-package com.jrda.kata_log_christmas.wardrobe;
+package com.jrda.kata_log.wardrobe;
 
 import static org.junit.Assert.assertEquals;
 
