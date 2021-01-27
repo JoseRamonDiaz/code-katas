@@ -6,27 +6,27 @@ import java.util.Set;
 public class Diversion {
 
     public Set<String> generateCombinations(int length) throws Exception {
-        Set<String> baseCase = new HashSet<>(){
+        Set<String> baseCase = new HashSet<String>() {
             /**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+             *
+             */
+            private static final long serialVersionUID = 1L;
 
-			{
+            {
                 add("0");
                 add("1");
             }
         };
 
-        if(length <= 0){
+        if (length <= 0) {
             throw new Exception("String length need to be greater than zero");
         }
 
-        if(length == 1){
+        if (length == 1) {
             return baseCase;
         }
 
-        for(int i = 0; i < length -1; i++){
+        for (int i = 0; i < length - 1; i++) {
             baseCase = new SetUtils().duplicateAndAddZerosAndOnes(baseCase);
         }
 
@@ -36,8 +36,8 @@ public class Diversion {
     public int getAdjacentOnes(Set<String> combinations) {
         int adjacent = 0;
 
-        for(String s : combinations){
-            if(s.contains("11")){
+        for (String s : combinations) {
+            if (s.contains("11")) {
                 adjacent++;
             }
         }
