@@ -9,7 +9,7 @@ public class BloomFilterTest {
 	@Test
 	public void testStoreHashesToArray() {
 		BloomFilter bf = new BloomFilter();
-	 	assertTrue( bf.search("a") );
+	 	assertTrue( bf.search("rots") );
 	}
 	
 }

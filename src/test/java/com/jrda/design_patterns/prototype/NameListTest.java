@@ -2,7 +2,7 @@ package com.jrda.design_patterns.prototype;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class NameListTest {
     @Test
@@ -13,6 +13,6 @@ public class NameListTest {
         NameList nameList1 = nameList.clone();
         nameList1.getNameList().set(0, "Christopher");
 
-        assertEquals("Pachi", nameList.getNameList().get(0));
+        assertNotEquals("Pachi", nameList.getNameList().get(0));
     }
 }

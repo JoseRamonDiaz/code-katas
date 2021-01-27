@@ -23,7 +23,10 @@ public class LogisticTest {
 
     @Test
     public void testSeaDelivery(){
+        Config config = Mockito.mock(Config.class);
+        when(config.getConfig()).thenReturn("Sea delivery");
         Logistic logistic = new SeaLogistic();
+        logistic.setConfig(config);
         assertEquals("Sea delivery", logistic.doDelivery());
     }
 }

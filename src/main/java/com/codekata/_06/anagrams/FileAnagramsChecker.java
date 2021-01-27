@@ -25,7 +25,7 @@ public class FileAnagramsChecker {
 	}
 	
 	private void checkAnagrams() {
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		int wordsListSize = wordsList.size();
 		@SuppressWarnings("unchecked")
 		Map<Character, Integer>[] mapArray = new HashMap[wordsListSize];
@@ -59,7 +59,7 @@ public class FileAnagramsChecker {
 					anagramsSets++;
 				}
 			}
-			wordPerSecond =  (i / ((System.currentTimeMillis()-startTime) / 1000)); 
+			wordPerSecond =  (i / ((System.nanoTime()-startTime) / 1000));
 			System.out.println("palabras por segundo " + wordPerSecond);
 		}
 		
