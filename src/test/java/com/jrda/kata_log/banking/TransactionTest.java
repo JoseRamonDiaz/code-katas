@@ -44,4 +44,21 @@ public class TransactionTest {
 		transaction = new Transaction("other date", "+", "a");
 		assertEquals("a", transaction.getAmmount());
 	}
+	
+	@Test
+	public void testEquals() {
+		Transaction transactionCopy = new Transaction("date", "operation", "ammount");
+		assertEquals(transaction, transactionCopy);
+	}
+	
+	@Test
+	public void testToString() {
+		String toString = transaction.toString();
+		assertNotNull(toString);
+		assertFalse(toString.isEmpty());
+		assertEquals("Transaction [date=date, operation=operation, ammount=ammount]", toString);
+		
+		transaction = new Transaction("other date", "+", "a");
+		assertEquals("Transaction [date=other date, operation=+, ammount=a]", transaction.toString());
+	}
 }
