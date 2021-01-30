@@ -32,12 +32,4 @@ public class Account {
 	protected void setTimeService(TimeService timeService) {
 		this.timeService = timeService;
 	}
-
-//	public void getStringStatement() {
-//		System.out.format("%-30s%-15s%-15s%n", "Date", "Operation", "Balance");
-//		for (Transaction t : statement) {
-//			System.out.format("%-30s%-15s%-15s%n", t.getDate(), t.getOperation(), t.getAmmount());
-//		}
-//	}
-	
 }
