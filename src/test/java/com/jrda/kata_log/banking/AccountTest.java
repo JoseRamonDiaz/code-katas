@@ -1,6 +1,8 @@
 package com.jrda.kata_log.banking;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -45,4 +47,16 @@ public class AccountTest {
     	account.withdraw(1);
     }
     
+    @Test
+    public void testTransaction() {
+    	
+    }
+    
+    @Test
+    public void testGetStatement() {
+    	String statement = account.getStatement();
+    	assertNotNull(statement);
+    	assertFalse(statement.isEmpty());
+    	assertEquals("Date	Amount	Balance", statement);
+    }
 }

@@ -17,4 +17,8 @@ public class Account {
 			
 		balance -= ammount;
 	}
+
+	public String getStatement() {
+		return "Date	Amount	Balance";
+	}
 }
