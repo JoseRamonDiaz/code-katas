@@ -61,4 +61,5 @@ public class TransactionTest {
 		transaction = new Transaction("other date", "+", "a");
 		assertEquals("Transaction [date=other date, operation=+, ammount=a]", transaction.toString());
 	}
+	
 }
