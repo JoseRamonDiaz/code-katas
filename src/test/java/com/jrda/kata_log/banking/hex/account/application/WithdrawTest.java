@@ -2,6 +2,7 @@ package com.jrda.kata_log.banking.hex.account.application;
 
 import com.jrda.kata_log.banking.hex.account.domain.Account;
 import com.jrda.kata_log.banking.hex.account.domain.AccountRepository;
+import com.jrda.kata_log.banking.hex.account.domain.WithdrawException;
 import org.junit.Test;
 import org.mockito.Mockito;
 
