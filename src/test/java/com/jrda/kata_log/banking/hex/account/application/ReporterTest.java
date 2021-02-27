@@ -34,8 +34,9 @@ public class ReporterTest {
 		
 		System.out.println(reportString);
 		
-		assertEquals("Date                          Operation      Ammount        \n"
-				+ "Sat Feb 06 08:53:58 CST 2021  +100            100            \n"
-				+ "Sat Feb 06 08:54:17 CST 2021  +500            600            \n", reportString);
+		//this test changes depending on operative system used
+		assertEquals("Date                          Operation      Ammount        \r\n"
+				+ "Sat Feb 06 08:53:58 CST 2021  +100            100            \r\n"
+				+ "Sat Feb 06 08:54:17 CST 2021  +500            600            \r\n", reportString);
 	}
 }
