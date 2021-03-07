@@ -60,7 +60,9 @@ public class UserTest {
 
     @Test
     public void testEquals() {
+        user.setUserName("username");
         User user1 = new User(user.getName(), user.getLastname());
+        user1.setUserName("username");
         assertEquals(user1, user);
     }
 
