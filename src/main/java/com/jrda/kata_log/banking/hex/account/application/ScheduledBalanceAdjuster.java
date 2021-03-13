@@ -22,6 +22,7 @@ public class ScheduledBalanceAdjuster {
 
     public void start() {
         toBeBalanceRecalculated = accountRepository.getAccountsToRecalculateBalance();
+        toBeBalanceRecalculated.forEach(this::reCalculateBalance);
     }
 
     private void reCalculateBalance(Account account) {
