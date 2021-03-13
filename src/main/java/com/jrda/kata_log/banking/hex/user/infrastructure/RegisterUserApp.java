@@ -1,7 +1,9 @@
 package com.jrda.kata_log.banking.hex.user.infrastructure;
 
 import com.jrda.kata_log.banking.hex.account.application.AccountCreator;
+import com.jrda.kata_log.banking.hex.account.domain.Account;
 import com.jrda.kata_log.banking.hex.account.domain.AccountRepository;
+import com.jrda.kata_log.banking.hex.account.domain.AccountType;
 import com.jrda.kata_log.banking.hex.account.infrastructure.InMemAccountRepo;
 import com.jrda.kata_log.banking.hex.credential.application.CredentialCreator;
 import com.jrda.kata_log.banking.hex.credential.domain.CredentialRepository;
@@ -54,7 +56,7 @@ public class RegisterUserApp {
                     break;
 
                 case "1":
-                    int id = accountCreator.create();
+                    int id = accountRepository.save(new Account(AccountType.SAVING));
                     System.out.println("Account created with id: " + id);
                     break;
 

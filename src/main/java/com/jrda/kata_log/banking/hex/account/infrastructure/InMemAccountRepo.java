@@ -1,15 +1,17 @@
 package com.jrda.kata_log.banking.hex.account.infrastructure;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.jrda.kata_log.banking.hex.account.domain.Account;
 import com.jrda.kata_log.banking.hex.account.domain.AccountRepository;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class InMemAccountRepo implements AccountRepository {
 	private int counter = 0;
 	
-	private Map<Integer, Account> accounts = new HashMap<>();
+	private Map<String, Account> accounts = new HashMap<>();
 
 	@Override
 	public Account getById(int id) {
@@ -17,16 +19,15 @@ public class InMemAccountRepo implements AccountRepository {
 	}
 
 	@Override
-	public int createAccount() {
-		accounts.put(counter, new Account(0));
-		counter++;
+	public int save(Account account) {
+		account.setId(counter++ + "");
+		accounts.put(account.getId(), account);
 		return counter - 1;
 	}
 
 	@Override
-	public int save(Account account) {
-		accounts.put(account.getId(), account);
-		return account.getId();
+	public List<Account> getAccountsToRecalculateBalance() {
+		return new ArrayList<>(accounts.values());
 	}
-	
+
 }

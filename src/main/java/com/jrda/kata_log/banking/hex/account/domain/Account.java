@@ -9,10 +9,11 @@ import com.jrda.kata_log.banking.hex.transaction.domain.Transaction;
 public class Account {
 	private int balance;
 	private List<Transaction> statement = new ArrayList<>();
-	private final int id;
+	private String id;
+	private AccountType accountType;
 	
-	public Account(int id) {
-		this.id = id;
+	public Account(AccountType accountType) {
+		this.accountType = accountType;
 	}
 
 	public int getBalance() {
@@ -33,13 +34,25 @@ public class Account {
 
 	@Override
 	public Account clone() {
-		Account clonedAccount = new Account(this.id);
+		Account clonedAccount = new Account(this.accountType);
 		clonedAccount.setBalance(this.balance);
 		clonedAccount.statement = this.statement.stream().collect(Collectors.toList());
 		return clonedAccount;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public AccountType getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
 	}
 }

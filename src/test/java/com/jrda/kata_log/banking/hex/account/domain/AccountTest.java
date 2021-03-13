@@ -15,7 +15,7 @@ import com.jrda.kata_log.banking.hex.transaction.domain.Transaction;
 public class AccountTest {
 	@Test
 	public void testCreateAcount() {
-		Account account = new Account(0);
+		Account account = new Account(AccountType.SAVING);
 		assertEquals(0, account.getBalance());
 		account.setBalance(500);
 		assertEquals(500, account.getBalance());
@@ -31,7 +31,7 @@ public class AccountTest {
 	
 	@Test
 	public void testClone() {
-		Account account = new Account(0);
+		Account account = new Account(AccountType.SAVING);
 		account.setBalance(1000);
 		Transaction t = new Transaction(new Date(), "+", 500, 1000);
 		account.addTransaction(t);
@@ -50,10 +50,13 @@ public class AccountTest {
 	
 	@Test
 	public void testSetId() {
-		Account account = new Account(0);
-		assertEquals(0, account.getId());
-		
-		Account account2 = new Account(2);
-		assertEquals(2, account2.getId());
+		Account account = new Account(AccountType.SAVING);
+		account.setId("0");
+		assertEquals("0", account.getId());
+
+
+		Account account2 = new Account(AccountType.SAVING);
+		account2.setId("2");
+		assertEquals("2", account2.getId());
 	}
 }

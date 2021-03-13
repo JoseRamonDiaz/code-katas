@@ -5,7 +5,9 @@ import java.util.Scanner;
 import com.jrda.kata_log.banking.hex.account.application.AccountCreator;
 import com.jrda.kata_log.banking.hex.account.application.Deposit;
 import com.jrda.kata_log.banking.hex.account.application.Reporter;
+import com.jrda.kata_log.banking.hex.account.domain.Account;
 import com.jrda.kata_log.banking.hex.account.domain.AccountRepository;
+import com.jrda.kata_log.banking.hex.account.domain.AccountType;
 
 public class ConsoleBank {
 
@@ -25,7 +27,7 @@ public class ConsoleBank {
 
 			switch (in.nextLine()) {
 			case "0":
-				int id = accountCreator.create();
+				int id = accountRepository.save(new Account(AccountType.SAVING));
 				System.out.println("Account created with id: " + id);
 				break;
 				
