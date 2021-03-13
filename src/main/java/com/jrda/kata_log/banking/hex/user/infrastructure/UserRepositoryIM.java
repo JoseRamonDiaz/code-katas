@@ -13,6 +13,11 @@ public class UserRepositoryIM implements UserRepository {
     @Override
     public void storeUser(User user) {
         user.setId(UUID.randomUUID().toString());
-        userMap.put(user.getUserId(), user);
+        userMap.put(user.getUserName(), user);
+    }
+
+    @Override
+    public User getByUsername(String userId) {
+        return userMap.get(userId);
     }
 }

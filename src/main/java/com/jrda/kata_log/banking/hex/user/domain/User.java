@@ -1,5 +1,9 @@
 package com.jrda.kata_log.banking.hex.user.domain;
 
+import com.jrda.kata_log.banking.hex.account.domain.Account;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -7,10 +11,12 @@ public class User {
     private final String lastname;
     private String userId;
     private String username;
+    private List<Account> accountList;
 
     public User(String name, String lastname){
         this.name = name;
         this.lastname = lastname;
+        accountList = new ArrayList<>();
     }
 
     public String getName() {
@@ -35,6 +41,14 @@ public class User {
 
     public String getUserName() {
         return username;
+    }
+
+    public void addAccount(Account account){
+        accountList.add(account);
+    }
+
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
     }
 
     @Override

@@ -1,8 +1,12 @@
 package com.jrda.kata_log.banking.hex.user.infrastructure;
 
+import com.jrda.kata_log.banking.hex.account.application.AccountCreator;
+import com.jrda.kata_log.banking.hex.account.domain.AccountRepository;
+import com.jrda.kata_log.banking.hex.account.infrastructure.InMemAccountRepo;
 import com.jrda.kata_log.banking.hex.credential.application.CredentialCreator;
 import com.jrda.kata_log.banking.hex.credential.domain.CredentialRepository;
 import com.jrda.kata_log.banking.hex.credential.infrastructure.CredentialRepositoryInMem;
+import com.jrda.kata_log.banking.hex.user.application.AccountAdder;
 import com.jrda.kata_log.banking.hex.user.application.RegisterUser;
 import com.jrda.kata_log.banking.hex.user.application.UserCreator;
 import com.jrda.kata_log.banking.hex.user.domain.UserRepository;
@@ -11,7 +15,11 @@ import java.util.Scanner;
 
 public class RegisterUserApp {
     public static void main(String[] args) {
-        RegisterUser registerUser = createRegisterUser();
+        AccountRepository accountRepository = new InMemAccountRepo();
+        AccountCreator accountCreator = new AccountCreator(accountRepository);
+        UserRepository userRepository = new UserRepositoryIM();
+        RegisterUser registerUser = createRegisterUser(userRepository);
+        AccountAdder accountAdder = new AccountAdder(userRepository, accountRepository);
 
         boolean keepGoing = true;
         Scanner in;
@@ -19,6 +27,8 @@ public class RegisterUserApp {
             System.out.println("Select your option: ");
             System.out.println("-1: Exit");
             System.out.println("0: Register user");
+            System.out.println("1: Create account");
+            System.out.println("2: Add account to user");
             in = new Scanner(System.in);
 
             switch (in.nextLine()) {
@@ -43,6 +53,19 @@ public class RegisterUserApp {
 
                     break;
 
+                case "1":
+                    int id = accountCreator.create();
+                    System.out.println("Account created with id: " + id);
+                    break;
+
+                case "2":
+                    System.out.println("Username: ");
+                    String usernameToAddAccount = in.next();
+                    System.out.println("Account id");
+                    int accountId = in.nextInt();
+                    accountAdder.add(usernameToAddAccount, accountId);
+                    break;
+
                 default:
                     System.out.println("Invalid option");
                     break;
@@ -55,8 +78,7 @@ public class RegisterUserApp {
         in.close();
     }
 
-    private static RegisterUser createRegisterUser() {
-        UserRepository userRepository = new UserRepositoryIM();
+    private static RegisterUser createRegisterUser(UserRepository userRepository) {
         UserCreator userCreator = new UserCreator(userRepository);
         CredentialRepository credentialRepository = new CredentialRepositoryInMem();
         CredentialCreator credentialCreator = new CredentialCreator(credentialRepository);
