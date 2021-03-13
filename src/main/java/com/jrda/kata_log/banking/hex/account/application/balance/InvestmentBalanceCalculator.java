@@ -1,4 +1,4 @@
-package com.jrda.kata_log.banking.hex.account.application;
+package com.jrda.kata_log.banking.hex.account.application.balance;
 
 import com.jrda.kata_log.banking.hex.account.domain.Account;
 

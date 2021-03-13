@@ -1,4 +1,4 @@
-package com.jrda.kata_log.banking.hex.account.application;
+package com.jrda.kata_log.banking.hex.account.application.balance;
 
 import com.jrda.kata_log.banking.hex.account.domain.Account;
 import com.jrda.kata_log.banking.hex.account.domain.AccountRepository;
@@ -11,7 +11,7 @@ import java.util.List;
  * Run every day looking for accounts that needs to recalculate its balance
  */
 public class ScheduledBalanceAdjuster {
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
     private BalanceCalculatorApplier balanceCalculatorApplier;
     private List<Account> toBeBalanceRecalculated;
 
