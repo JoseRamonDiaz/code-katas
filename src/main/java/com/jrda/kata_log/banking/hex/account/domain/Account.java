@@ -1,17 +1,16 @@
 package com.jrda.kata_log.banking.hex.account.domain;
 
+import com.jrda.kata_log.banking.hex.transaction.domain.Transaction;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import com.jrda.kata_log.banking.hex.transaction.domain.Transaction;
 
 public class Account {
 	private int balance;
 	private List<Transaction> statement = new ArrayList<>();
 	private String id;
 	private AccountType accountType;
-	
+
 	public Account(AccountType accountType) {
 		this.accountType = accountType;
 	}
@@ -36,7 +35,7 @@ public class Account {
 	public Account clone() {
 		Account clonedAccount = new Account(this.accountType);
 		clonedAccount.setBalance(this.balance);
-		clonedAccount.statement = this.statement.stream().collect(Collectors.toList());
+		clonedAccount.statement = new ArrayList<>(this.statement);
 		return clonedAccount;
 	}
 
