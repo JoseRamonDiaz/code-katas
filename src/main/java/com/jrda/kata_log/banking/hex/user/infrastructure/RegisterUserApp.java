@@ -59,7 +59,7 @@ public class RegisterUserApp {
                     break;
 
                 case "1":
-                    int id = accountRepository.save(new Account(AccountType.SAVING));
+                    int id = accountCreator.createSaving();
                     System.out.println("Account created with id: " + id);
                     break;
 
