@@ -1,9 +1,7 @@
 package com.jrda.kata_log.banking.hex.user.infrastructure;
 
 import com.jrda.kata_log.banking.hex.account.application.AccountCreator;
-import com.jrda.kata_log.banking.hex.account.domain.Account;
 import com.jrda.kata_log.banking.hex.account.domain.AccountRepository;
-import com.jrda.kata_log.banking.hex.account.domain.AccountType;
 import com.jrda.kata_log.banking.hex.account.infrastructure.InMemAccountRepo;
 import com.jrda.kata_log.banking.hex.credential.application.CredentialCreator;
 import com.jrda.kata_log.banking.hex.credential.domain.CredentialRepository;
