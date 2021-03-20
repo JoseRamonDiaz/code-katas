@@ -9,21 +9,21 @@ public class LocCounter {
     boolean multilineComment = false;
     LocMatcher locMatcher = new LocMatcher();
 
-    public int getCount(String fileName){
+    public int getCount(String fileName) {
         DataReader dataReader = new DataReader(fileName);
         List<String> lines = dataReader.getLines();
 
-        for(String line : lines){
-            if(isInlineComment(line) || line.isBlank()) {
+        for (String line : lines) {
+            if (line == null || line.isEmpty() || isInlineComment(line)) {
                 emptyLines++;
                 continue;
             }
 
-            if(locMatcher.isMultilineCommentStart(line)){
+            if (locMatcher.isMultilineCommentStart(line)) {
                 emptyLines++;
                 multilineComment = true;
-            }else{
-                if(multilineComment){
+            } else {
+                if (multilineComment) {
                     countMultilineCommentLines(line);
                 }
             }
@@ -32,16 +32,16 @@ public class LocCounter {
     }
 
     private void countMultilineCommentLines(String line) {
-        if(locMatcher.isMultilineCommentEnd(line)){
+        if (locMatcher.isMultilineCommentEnd(line)) {
             emptyLines++;
             multilineComment = false;
-        }else{
+        } else {
             emptyLines++;
         }
     }
 
-    private boolean isInlineComment(String line){
-        if(locMatcher.isSingleLineComment(line) || locMatcher.isMultilineCommentInLine(line)) {
+    private boolean isInlineComment(String line) {
+        if (locMatcher.isSingleLineComment(line) || locMatcher.isMultilineCommentInLine(line)) {
             return true;
         }
         return false;

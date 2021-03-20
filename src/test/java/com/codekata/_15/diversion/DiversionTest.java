@@ -11,25 +11,25 @@ public class DiversionTest {
     @Test
     public void testCombinationsGeneration() throws Exception {
         Diversion diversion = new Diversion();
-        assertEquals(new HashSet<>(){
+        assertEquals(new HashSet<String>() {
             /**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+             *
+             */
+            private static final long serialVersionUID = 1L;
 
-			{
+            {
                 add("0");
                 add("1");
             }
         }, diversion.generateCombinations(1));
 
-        assertEquals(new HashSet<>(){
+        assertEquals(new HashSet<String>() {
             /**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+             *
+             */
+            private static final long serialVersionUID = 1L;
 
-			{
+            {
                 add("00");
                 add("01");
                 add("11");
