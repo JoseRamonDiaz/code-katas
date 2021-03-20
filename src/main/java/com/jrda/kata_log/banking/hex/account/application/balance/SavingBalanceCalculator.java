@@ -1,5 +1,8 @@
 package com.jrda.kata_log.banking.hex.account.application.balance;
 
+import com.jrda.kata_log.banking.hex.account.application.balance.charge_validators.AccountValidator;
+import com.jrda.kata_log.banking.hex.account.application.balance.charge_validators.AmountAccountValidator;
+import com.jrda.kata_log.banking.hex.account.application.balance.charge_validators.DepositDateAccountValidator;
 import com.jrda.kata_log.banking.hex.account.domain.Account;
 import com.jrda.kata_log.banking.hex.transaction.domain.Transaction;
 
@@ -13,8 +16,6 @@ public class SavingBalanceCalculator implements BalanceCalculator {
 
         if (accountValidator.validate(account))
             applyCharges(account);
-
-        System.out.println("Re-calculating balance for saving account");
     }
 
     private void applyCharges(Account account) {

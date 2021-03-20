@@ -31,4 +31,13 @@ public class Transaction {
 		return balance;
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction{" +
+				"date=" + date +
+				", operation='" + operation + '\'' +
+				", amount=" + amount +
+				", balance=" + balance +
+				'}';
+	}
 }

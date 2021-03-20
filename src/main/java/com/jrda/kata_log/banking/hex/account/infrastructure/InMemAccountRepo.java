@@ -11,7 +11,7 @@ import java.util.Map;
 public class InMemAccountRepo implements AccountRepository {
 	private int counter = 0;
 	
-	private Map<String, Account> accounts = new HashMap<>();
+	private final Map<Integer, Account> accounts = new HashMap<>();
 
 	@Override
 	public Account getById(int id) {
@@ -21,7 +21,7 @@ public class InMemAccountRepo implements AccountRepository {
 	@Override
 	public int save(Account account) {
 		account.setId(counter++ + "");
-		accounts.put(account.getId(), account);
+		accounts.put(Integer.parseInt(account.getId()), account);
 		return counter - 1;
 	}
 

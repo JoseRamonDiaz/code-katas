@@ -36,6 +36,7 @@ public class Account {
 		Account clonedAccount = new Account(this.accountType);
 		clonedAccount.setBalance(this.balance);
 		clonedAccount.statement = new ArrayList<>(this.statement);
+		clonedAccount.setId(this.id);
 		return clonedAccount;
 	}
 
@@ -53,5 +54,15 @@ public class Account {
 
 	public void setAccountType(AccountType accountType) {
 		this.accountType = accountType;
+	}
+
+	@Override
+	public String toString() {
+		return "Account{" +
+				"balance=" + balance +
+				", statement=" + statement +
+				", id='" + id + '\'' +
+				", accountType=" + accountType +
+				'}';
 	}
 }

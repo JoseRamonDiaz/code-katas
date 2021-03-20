@@ -11,6 +11,7 @@ import com.jrda.kata_log.banking.hex.credential.infrastructure.CredentialReposit
 import com.jrda.kata_log.banking.hex.user.application.AccountAdder;
 import com.jrda.kata_log.banking.hex.user.application.RegisterUser;
 import com.jrda.kata_log.banking.hex.user.application.UserCreator;
+import com.jrda.kata_log.banking.hex.user.application.UserLoader;
 import com.jrda.kata_log.banking.hex.user.domain.UserRepository;
 
 import java.util.Scanner;
@@ -22,6 +23,7 @@ public class RegisterUserApp {
         UserRepository userRepository = new UserRepositoryIM();
         RegisterUser registerUser = createRegisterUser(userRepository);
         AccountAdder accountAdder = new AccountAdder(userRepository, accountRepository);
+        UserLoader userLoader = new UserLoader(userRepository);
 
         boolean keepGoing = true;
         Scanner in;
@@ -31,6 +33,7 @@ public class RegisterUserApp {
             System.out.println("0: Register user");
             System.out.println("1: Create account");
             System.out.println("2: Add account to user");
+            System.out.println("3: Load user");
             in = new Scanner(System.in);
 
             switch (in.nextLine()) {
@@ -66,6 +69,12 @@ public class RegisterUserApp {
                     System.out.println("Account id");
                     int accountId = in.nextInt();
                     accountAdder.add(usernameToAddAccount, accountId);
+                    break;
+
+                case "3":
+                    System.out.println("Username: ");
+                    String loadUserName = in.next();
+                    System.out.println(userLoader.load(loadUserName));
                     break;
 
                 default:

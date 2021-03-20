@@ -1,4 +1,4 @@
-package com.jrda.kata_log.banking.hex.account.application.balance;
+package com.jrda.kata_log.banking.hex.account.application.balance.charge_validators;
 
 import com.jrda.kata_log.banking.hex.account.domain.Account;
 
