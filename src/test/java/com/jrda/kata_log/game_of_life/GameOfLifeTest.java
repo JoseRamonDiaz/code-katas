@@ -9,14 +9,9 @@ public class GameOfLifeTest {
         GameOfLife gameOfLife = new GameOfLife(100, 0.50);
         System.out.println(gameOfLife.toString());
 
-//        System.out.println("###########TICK###########");
-//        gameOfLife.tick();
-//        System.out.println(gameOfLife.toString());
-
-        while(true){
-            gameOfLife.tick();
-            System.out.println(gameOfLife.toString());
-        }
+        System.out.println("###########TICK###########");
+        gameOfLife.tick();
+        System.out.println(gameOfLife.toString());
 
     }
 }
