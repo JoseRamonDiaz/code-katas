@@ -1,5 +1,9 @@
 package com.jrda.kata_log.game_of_life;
 
+import com.jrda.kata_log.game_of_life.domain.Cell;
+import com.jrda.kata_log.game_of_life.domain.DeadState;
+import com.jrda.kata_log.game_of_life.domain.LiveState;
+import com.jrda.kata_log.game_of_life.domain.State;
 import org.junit.Before;
 import org.junit.Test;
 

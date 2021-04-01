@@ -1,11 +1,15 @@
-package com.jrda.kata_log.game_of_life;
+package com.jrda.kata_log.game_of_life.application;
+
+import com.jrda.kata_log.game_of_life.domain.Cell;
+import com.jrda.kata_log.game_of_life.domain.DeadState;
+import com.jrda.kata_log.game_of_life.domain.LiveState;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class GameOfLife {
-    private Cell[][] grid;
+    private final Cell[][] grid;
 
     public GameOfLife(int size, double percentageOfLive) {
         //adding two, we can move around cells without going out of bounds
@@ -86,9 +90,9 @@ public class GameOfLife {
         for (int i = 1; i < grid.length - 1; i++) {
             for (int j = 1; j < grid[0].length - 1; j++) {
                 if (grid[i][j].isAlive())
-                    stringBuilder.append("O");
+                    stringBuilder.append("O ");
                 else
-                    stringBuilder.append("X");
+                    stringBuilder.append("X ");
             }
             stringBuilder.append(System.getProperty("line.separator"));
         }

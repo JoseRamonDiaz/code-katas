@@ -1,4 +1,4 @@
-package com.jrda.kata_log.game_of_life;
+package com.jrda.kata_log.game_of_life.domain;
 
 public class LiveState extends State {
 
