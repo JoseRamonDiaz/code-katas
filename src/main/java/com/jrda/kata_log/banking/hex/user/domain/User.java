@@ -74,4 +74,8 @@ public class User {
                 ", accountList=" + accountList +
                 '}';
     }
+
+    public void removeAccount(Account accountToRemove) {
+        this.accountList.remove(accountToRemove);
+    }
 }
