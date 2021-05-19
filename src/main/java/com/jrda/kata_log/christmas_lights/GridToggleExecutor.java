@@ -4,7 +4,7 @@ public class GridToggleExecutor extends GridExecutor {
 
 	@Override
 	protected void action(Light light) {
-		light.toogle();
+		light.toggle();
 	}
 
 }

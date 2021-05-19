@@ -33,10 +33,10 @@ public class LightTest {
 	@Test
 	public void testToogle() {
 		light.off();
-		light.toogle();
+		light.toggle();
 		assertEquals(2, light.getBrightness());
 		
-		light.toogle();
+		light.toggle();
 		assertEquals(4, light.getBrightness());
 	}
 	

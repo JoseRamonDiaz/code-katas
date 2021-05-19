@@ -16,7 +16,7 @@ public class Light {
 			brightness--;
 	}
 
-	public void toogle() {
+	public void toggle() {
 		brightness += 2;
 	}
 
