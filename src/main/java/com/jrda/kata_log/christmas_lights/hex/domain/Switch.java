@@ -12,12 +12,6 @@ public class Switch {
         while(lightIterator.hasNext()) {
             lightIterator.next().on();
         }
-
-//        for (int i = originX; i <= destX; i++) {
-//            for (int j = originY; j <= destY; j++) {
-//                lights[i][j].on();
-//            }
-//        }
     }
 
     public void turnOff(int originX, int originY, int destX, int destY) {
