@@ -8,18 +8,22 @@ public class Switch {
     }
 
     public void turnOn(int originX, int originY, int destX, int destY) {
-        for (int i = originX; i <= destX; i++) {
-            for (int j = originY; j <= destY; j++) {
-                lights[i][j].on();
-            }
+        LightIterator lightIterator = new LightIterator(lights, originX, originY, destX, destY);
+        while(lightIterator.hasNext()) {
+            lightIterator.next().on();
         }
+
+//        for (int i = originX; i <= destX; i++) {
+//            for (int j = originY; j <= destY; j++) {
+//                lights[i][j].on();
+//            }
+//        }
     }
 
     public void turnOff(int originX, int originY, int destX, int destY) {
-        for (int i = originX; i <= destX; i++) {
-            for (int j = originY; j <= destY; j++) {
-                lights[i][j].off();
-            }
+        LightIterator lightIterator = new LightIterator(lights, originX, originY, destX, destY);
+        while(lightIterator.hasNext()) {
+            lightIterator.next().off();
         }
     }
 }
