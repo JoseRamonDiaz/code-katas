@@ -21,8 +21,8 @@ public class DateTimeTest {
 	@Before
 	public void init() {
 		dateTime = new DateTime();
-		testDate0 = new Date(1612006918178l);
-		testDate1 = new Date(1612007293934l);
+		testDate0 = new Date(1612006918178L);
+		testDate1 = new Date(1612007293934L);
 		expectedDate0 = "2021-01-30 05:41:58.178";
 		expectedDate1 = "2021-01-30 05:48:13.934";
 	}
