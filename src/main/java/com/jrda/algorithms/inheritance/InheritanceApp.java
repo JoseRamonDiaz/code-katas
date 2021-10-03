@@ -8,6 +8,23 @@ public class InheritanceApp {
     }
 
     public void birth(String parent, String childName) {
+        for (Node n : kingNode) {
+            if (n.getName().equalsIgnoreCase(parent)) {
+                n.addChild(childName);
+            }
+        }
+    }
 
+    public String getSuccession() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Node n : kingNode) {
+            stringBuilder.append(n.getName()).append(", ");
+        }
+
+        return stringBuilder.toString();
+    }
+
+    protected Node getKingNode() {
+        return kingNode;
     }
 }

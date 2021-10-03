@@ -19,6 +19,7 @@ public class NodeIterator implements Iterator<Node> {
 
     @Override
     public Node next() {
+        //TODO create a flat list on iterator creation, to make it easy to traverse and avoid problems preserving the state
         childIndexMap.putIfAbsent(current, -1);
 
         Node next = current;

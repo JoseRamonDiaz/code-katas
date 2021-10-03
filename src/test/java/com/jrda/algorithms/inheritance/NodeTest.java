@@ -7,9 +7,9 @@ public class NodeTest {
     public void testIterator() {
         Node node = new Node("0");
         node.addChild("1");
-        node.addChild("3");
+        node.addChild("2");
 
-        node.getChildren().get(0).addChild("2");
+//        node.getChildren().get(0).addChild("2");
 
 
         System.out.println("Nodes: ");
