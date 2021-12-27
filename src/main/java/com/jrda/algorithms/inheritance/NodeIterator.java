@@ -3,7 +3,7 @@ package com.jrda.algorithms.inheritance;
 import java.util.*;
 
 public class NodeIterator implements Iterator<Node> {
-    private List<Node> nodeList;
+    private final List<Node> nodeList;
     private int position = 0;
 
     public NodeIterator(Node current) {
@@ -12,7 +12,8 @@ public class NodeIterator implements Iterator<Node> {
     }
 
     private void flatMap(Node current) {
-        nodeList.add(current);
+        if (!current.isDead())
+            nodeList.add(current);
 
         if (current.getChildren() != null && !current.getChildren().isEmpty()) {
             for (Node n : current.getChildren()) {

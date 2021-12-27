@@ -43,6 +43,10 @@ public class Node implements Iterable<Node> {
         this.parent = parent;
     }
 
+    public boolean isDead() {
+        return !alive;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
