@@ -2,6 +2,8 @@ package com.jrda.algorithms.inheritance;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class ThroneInheritanceTest {
@@ -13,9 +15,6 @@ public class ThroneInheritanceTest {
         assertFalse(throneInheritance.getInheritanceOrder().stream().anyMatch(s -> s.equals("king")));
     }
 
-//    ["ThroneInheritance","birth","birth","birth","birth","birth","birth","getInheritanceOrder","death","getInheritanceOrder"]
-//    [["king"],["king","andy"],["king","bob"],["king","catherine"],["andy","matthew"],["bob","alex"],["bob","asha"],[null],["bob"],[null]]
-
     @Test
     public void testCase1() {
         ThroneInheritance throneInheritance = new ThroneInheritance("king");
@@ -26,7 +25,9 @@ public class ThroneInheritanceTest {
         throneInheritance.birth("bob", "alex");
         throneInheritance.birth("bob", "asha");
 
-        System.out.println(throneInheritance.getInheritanceOrder());
+        assertEquals(Arrays.asList("king","andy","matthew","bob","alex","asha","catherine"), throneInheritance.getInheritanceOrder());
 
+        throneInheritance.death("bob");
+        assertEquals(Arrays.asList("king","andy","matthew","alex","asha","catherine"), throneInheritance.getInheritanceOrder());
     }
 }

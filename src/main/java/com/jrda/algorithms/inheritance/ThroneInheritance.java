@@ -1,37 +1,62 @@
 package com.jrda.algorithms.inheritance;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ThroneInheritance {
-    private final Node kingNode;
+    private final Map<String, Person> persons;
+    private final String kingName;
 
     public ThroneInheritance(String kingName) {
-        kingNode = new Node(kingName);
+        this.kingName = kingName;
+        persons = new HashMap<>();
+        persons.put(kingName, new Person(kingName));
     }
 
     public void birth(String parentName, String childName) {
-        for (Node n : kingNode) {
-            if (n.getName().equalsIgnoreCase(parentName)) {
-                n.addChild(childName);
-            }
+        Person parent = persons.get(parentName);
+        if (parent != null) {
+            Person p = new Person(childName);
+            parent.children.add(p);
+            persons.put(p.name, p);
         }
     }
 
     public void death(String name) {
-        for (Node n : kingNode) {
-            if (n.getName().equals(name))
-                n.die();
-        }
+        Person person = persons.get(name);
+        if (person != null)
+            person.isDead = true;
     }
 
     public List<String> getInheritanceOrder() {
-        List<String> result = new ArrayList<>();
+        List<String> inheritanceOrder = new ArrayList<>();
+        Person king = persons.get(kingName);
 
-        for (Node n : kingNode) {
-            result.add(n.getName());
+        addSons(king, inheritanceOrder);
+
+        return inheritanceOrder;
+    }
+
+    private void addSons(Person p, List<String> inheritanceOrder) {
+        if (p != null && !p.isDead)
+            inheritanceOrder.add(p.name);
+
+        if (p != null && p.children != null && !p.children.isEmpty()) {
+            p.children.forEach(person -> addSons(person, inheritanceOrder));
         }
+    }
 
-        return result;
+    private static class Person {
+        String name;
+        Boolean isDead;
+        List<Person> children;
+
+        public Person(String name) {
+            this.name = name;
+            isDead = false;
+            children = new ArrayList<>();
+        }
     }
 }
