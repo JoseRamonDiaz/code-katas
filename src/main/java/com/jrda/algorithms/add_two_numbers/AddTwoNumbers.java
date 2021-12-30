@@ -4,20 +4,10 @@ public class AddTwoNumbers {
     private boolean carry = false;
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
-        if ((l1 == null || l1.next == null) && (l2 == null || l2.next == null) && !carry && willNotHaveCarry(l1 == null ? 0 : l1.val, l2 == null ? 0 : l2.val)) {
-            if (l1 == null && l2 == null) {
-                return null;
-            }
-            return new ListNode(sum(l1, l2));
-        } else {
+        if (l1 == null && l2 == null && !carry)
+            return null;
+        else
             return new ListNode(sum(l1, l2), addTwoNumbers(l1 != null ? l1.next : null, l2 != null ? l2.next : null));
-        }
-
-    }
-
-    private boolean willNotHaveCarry(int val, int val1) {
-       return val + val1 <= 9;
     }
 
     private int sum(ListNode l1, ListNode l2) {
