@@ -2,6 +2,7 @@ package com.jrda.algorithms.add_two_numbers;
 
 public class AddTwoNumbers {
     private boolean carry = false;
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int val = l1.val + l2.val;
 
