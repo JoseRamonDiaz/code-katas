@@ -4,17 +4,7 @@ public class AddTwoNumbers {
     private boolean carry = false;
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int val = l1.val + l2.val;
-
-        if (val > 9) {
-            carry = true;
-        }
-
-        //use only the right digit
-        if (carry)
-            val = val - 10;
-
-        ListNode result = new ListNode(val);
+        ListNode result = new ListNode(sum(l1, l2));
         ListNode lastResult = result;
 
          while (l1 != null || l2 != null) {
