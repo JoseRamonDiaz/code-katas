@@ -4,21 +4,26 @@ public class AddTwoNumbers {
     private boolean carry = false;
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result = new ListNode(sum(l1, l2));
-        ListNode lastResult = result;
 
-         while (l1 != null || l2 != null) {
-             if ((l1 == null || l1.next == null) && (l2 == null || l2.next == null) && !carry)
-                 break;
+        if ((l1 == null || l1.next == null) && (l2 == null || l2.next == null) && !carry && willNotHaveCarry(l1 == null ? 0 : l1.val, l2 == null ? 0 : l2.val)) {
+            return new ListNode(sum(l1, l2));
+        } else {
+            boolean isL1Null = l1 == null;
+            boolean isL2Null = l2 == null;
 
-             l1 = l1 != null ? l1.next : null;
-             l2 = l2 != null ? l2.next : null;
+           ListNode nextL1 = l1 != null ? l1.next : null;
+           ListNode nextL2 = l2 != null ? l2.next : null;
 
-            lastResult.next = new ListNode(sum(l1, l2));
-            lastResult = lastResult.next;
-         }
+            if ((isL1Null || l1.next == null) && (isL2Null || l2.next == null) && (!isL1Null && !isL2Null) && willNotHaveCarry(l1 == null ? 0 : l1.val, l2 == null ? 0 : l2.val))
+                return new ListNode(sum(l1, l2));
+             else
+                return new ListNode(sum(l1, l2), addTwoNumbers(l1 != null ? l1.next : null, l2 != null ? l2.next : null));
+        }
 
-        return result;
+    }
+
+    private boolean willNotHaveCarry(int val, int val1) {
+       return val + val1 <= 9;
     }
 
     private int sum(ListNode l1, ListNode l2) {
