@@ -2,8 +2,7 @@ package com.jrda.algorithms.add_two_numbers;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class AddTwoNumbersTest {
     @Test
@@ -66,6 +65,7 @@ public class AddTwoNumbersTest {
         assertEquals(7, result.val);
         assertEquals(0, result.next.val);
         assertEquals(8, result.next.next.val);
+        assertNull(result.next.next.next);
     }
 
     @Test

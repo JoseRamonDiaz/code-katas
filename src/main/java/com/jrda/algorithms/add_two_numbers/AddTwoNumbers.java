@@ -8,6 +8,9 @@ public class AddTwoNumbers {
         ListNode lastResult = result;
 
          while (l1 != null || l2 != null) {
+             if ((l1 == null || l1.next == null) && (l2 == null || l2.next == null) && !carry)
+                 break;
+
              l1 = l1 != null ? l1.next : null;
              l2 = l2 != null ? l2.next : null;
 
