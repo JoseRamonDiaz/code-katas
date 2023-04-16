@@ -1,6 +1,7 @@
 package com.jrda.taxes.application;
 
 import com.jrda.taxes.domain.Deduction;
+import com.jrda.taxes.domain.DeductionRequest;
 
 public class SingleDeduction {
 	private CalculateTax calTax;
@@ -8,24 +9,10 @@ public class SingleDeduction {
 	public SingleDeduction(CalculateTax calTax) {
 		this.calTax = calTax;
 	}
-
-	/*
-	 * INPUT
-	 * original mount
-	 * how much we want to deduce
-	 * percentage to be used
-	 */
 	
-	/*
-	 * OUTPUT
-	 * taxes to pay without deduction
-	 * taxes to pay with deduction
-	 */
-	
-	public Deduction calculate(Double income, Double toDeduce, Double cappedPercentage) {
+	public Deduction calculate(Double income, DeductionRequest dr) {
 		Double taxWithoutDeduction = calTax.calculate(income);
-		Double limitToDeduce = income*(cappedPercentage/100);
-		Double taxWithDeduction = calTax.calculate(toDeduce <= limitToDeduce ? income-toDeduce : income-limitToDeduce);
+		Double taxWithDeduction = calTax.calculate(income - dr.getValidValueToDeduce(income));
 		
 		return new Deduction(taxWithoutDeduction, taxWithDeduction);
 	}
