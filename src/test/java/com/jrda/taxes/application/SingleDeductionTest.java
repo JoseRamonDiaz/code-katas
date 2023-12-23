@@ -17,4 +17,6 @@ public class SingleDeductionTest {
 		
 		assertEquals(new Deduction(209033.44, 182633.44), sd.calculate(888000d, new DeductionRequest(88000d, 10d)));
 	}
+	
+	//TODO https://leetcode.com/problems/pyramid-transition-matrix/
 }
