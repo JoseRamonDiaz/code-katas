@@ -1,6 +1,7 @@
 package com.codekata._02.chop;
 
 public class IterativeKarateChop {
+    private int start, middle, end;
 
     public int chop(int target, int[] numbers) {
         if (numbers.length == 1) {
@@ -10,27 +11,37 @@ public class IterativeKarateChop {
                 return -1;
         }
 
-        int start = 0;
-        int end = numbers.length - 1;
-        int middle = (int) Math.ceil((double) (start + end) / 2);
+       resetValues(numbers.length);
 
         while (middle <= end) {
-
             if (numbers[middle] == target)
                 return middle;
-
-            if (target < numbers[middle]) {
-                end = middle - 1;
-                middle = (int) Math.ceil((double) (start + end) / 2);
-                continue;
-            }
-
-            if (target > numbers[middle]) {
-                start = middle + 1;
-                middle = (int) Math.ceil((double) (start + end) / 2);
-            }
+            if (target < numbers[middle])
+                movePointerToTheFirstHalf();
+            else
+                movePointersToTheSecondHalf();
         }
 
         return -1;
+    }
+
+    private void movePointersToTheSecondHalf() {
+        start = middle + 1;
+        middle = recalculateMiddle();
+    }
+
+    private void movePointerToTheFirstHalf() {
+        end = middle - 1;
+        middle = recalculateMiddle();
+    }
+
+    private void resetValues(int length) {
+        start = 0;
+        end = length - 1;
+        middle = recalculateMiddle();
+    }
+
+    private int recalculateMiddle() {
+        return (int) Math.ceil((double) (start + end) / 2);
     }
 }
