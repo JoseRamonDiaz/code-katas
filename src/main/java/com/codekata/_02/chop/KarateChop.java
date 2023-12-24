@@ -11,6 +11,9 @@ public class KarateChop {
 	}
 
 	private int recursiveChop(int target, int[] numbers) {
+		if (numbers.length == 0)
+			return -1;
+
 		if (numbers.length == 1) {
 			if (numbers[0] == target) {
 				return carry;

@@ -12,6 +12,11 @@ public class KarateChopTest {
 	public void init() {
 		karateChop = new KarateChop();
 	}
+
+	@Test
+	public void testEmptyArray() {
+		assertEquals(-1, karateChop.chop(2, new int[] {}));
+	}
 	
 	@Test
 	public void testFoundInMiddle() {
