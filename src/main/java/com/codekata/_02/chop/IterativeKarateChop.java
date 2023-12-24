@@ -11,7 +11,7 @@ public class IterativeKarateChop {
                 return -1;
         }
 
-       resetValues(numbers.length);
+       resetVariablesValue(numbers.length);
 
         while (middle <= end) {
             if (numbers[middle] == target)
@@ -35,7 +35,7 @@ public class IterativeKarateChop {
         middle = recalculateMiddle();
     }
 
-    private void resetValues(int length) {
+    private void resetVariablesValue(int length) {
         start = 0;
         end = length - 1;
         middle = recalculateMiddle();
