@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class CarPayment {
 	
-	public void paymentTable(double amount, double interestRate, double monthPayment) throws InterruptedException {
+	public void paymentTable(double amount, double interestRate, double monthPayment) {
 		double debt = amount;
 		double annualPayment = monthPayment * 12;
 		
@@ -17,23 +17,34 @@ public class CarPayment {
 		
 	}
 	
-	public void monthPayment(double ammount, double interestRate, double monthsToPay ) {
+	public double monthPayment(double ammount, double interestRate, double monthsToPay ) {
 		double tasaMensual = interestRate / 100 / 12;
 
         double montlyPayment = (ammount * tasaMensual * Math.pow(1 + tasaMensual, monthsToPay)) /
                               (Math.pow(1 + tasaMensual, monthsToPay) - 1);
 
-        printMonthPayment(montlyPayment);
+        return montlyPayment;
 	}
 	
-	public void monthPayment2(double pv, double r, double n) {
+	public double monthPayment2(double pv, double r, double n) {
 		r = r / 100 / 12;
 		double montlyPayment = (pv * r) / (1 - Math.pow((1 + r), -n));
-		printMonthPayment(montlyPayment);
+	    return montlyPayment;
 	}
 	
-	private void printMonthPayment(double montlyPayment) {
-		System.out.printf("You will pay per month: %.2f\n", montlyPayment);
+	public void monthPaymentTable(double pv, double r, double monthPayment) {
+		r = r / 100 / 12;
+		double interestPayed = 0;
+		double capitalPayed = 0;
+		
+		while(pv > 0) {
+			interestPayed = pv * r;
+			capitalPayed = monthPayment - interestPayed;
+			pv = pv - capitalPayed;
+			
+			DecimalFormat formato = new DecimalFormat("#,###.###");
+			System.out.println("New debt: " + formato.format(pv) + ", month interest: " + formato.format(interestPayed) + ", capital payed:" + formato.format(capitalPayed));
+		}
 	}
 
 	public void pay(double debt, double interest, double payment) {
