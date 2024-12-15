@@ -14,7 +14,18 @@ public class ContinuousSubarraysTest {
 	}
 	
 	@Test
-	public void testContinuousSubarray() {
+	public void testContinuousSubarrayIterative() {
+		ContinuousSubarrays continuousSubarrays = new ContinuousSubarrays();
+		assertEquals(1, continuousSubarrays.continuousSubarraysIterative(new int[] {1}));
+		assertEquals(2, continuousSubarrays.continuousSubarraysIterative(new int[] {1, 5}));
+		assertEquals(4, continuousSubarrays.continuousSubarraysIterative(new int[] {1, 5, 7}));
+		assertEquals(6, continuousSubarrays.continuousSubarraysIterative(new int[] {1,2,3}));
+		assertEquals(8, continuousSubarrays.continuousSubarraysIterative(new int[] {5,4,2,4}));
+		assertEquals(43, continuousSubarrays.continuousSubarraysIterative(new int[] {65,66,67,66,66,65,64,65,65,64}));
+	}
+	
+	@Test
+	public void testContinuousSubtarray() {
 		ContinuousSubarrays continuousSubarrays = new ContinuousSubarrays();
 		assertEquals(1, continuousSubarrays.continuousSubarrays(new int[] {1}));
 		assertEquals(2, continuousSubarrays.continuousSubarrays(new int[] {1, 5}));
