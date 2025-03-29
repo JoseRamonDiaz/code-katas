@@ -1,7 +1,8 @@
 package com.project_euler;
 
 /**
- * 
+ * Problem 2
+ * Even Fibonacci Numbers
  */
 public class SumEvenFibonacci {
 	public int sum(int limit) {
