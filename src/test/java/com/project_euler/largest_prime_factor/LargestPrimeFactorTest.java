@@ -39,4 +39,22 @@ public class LargestPrimeFactorTest {
 
     assertEquals(limit, lpf.find(limit), 0.001);
   }
+
+  @Test
+  public void test6() {
+    long longLimit = 13195L;
+    PrimeGenerator pg = new PrimeGenerator(longLimit);
+    LargestPrimeFactor lpf = new LargestPrimeFactor(pg);
+
+    assertEquals(29, lpf.find(longLimit), 0.001);
+  }
+
+  @Test
+  public void test7() {
+    long longLimit = 600851475143L;
+    PrimeGenerator pg = new PrimeGenerator(longLimit);
+    LargestPrimeFactor lpf = new LargestPrimeFactor(pg);
+
+    assertEquals(6857, lpf.find(longLimit), 0.001);
+  }
 }

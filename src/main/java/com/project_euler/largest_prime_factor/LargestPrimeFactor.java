@@ -9,9 +9,10 @@ public class LargestPrimeFactor {
 
   public Long find(long n) {
     Long p = pg.next();
-    Long largestPrime = p;
+    Long largestPrime = n;
 
-    while (n > 1) {
+    //if p < 0 then there is no more primes to check, return n because is prime
+    while (n > 1 && p > 0) {
       if (n % p == 0) {
         n = n / p;
         largestPrime = p;

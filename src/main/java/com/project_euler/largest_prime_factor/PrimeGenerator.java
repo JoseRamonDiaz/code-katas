@@ -4,14 +4,20 @@ public class PrimeGenerator {
   boolean primeArray[];
   int pos = 1;
 
-  public PrimeGenerator(int limit) {
-    this.primeArray = new boolean[limit + 1];
+  public PrimeGenerator(long limit) {
+	int intLimit = (int) Math.floor(Math.sqrt(limit));
+    this.primeArray = new boolean[intLimit + 1];
     primeArray[0] = true;
     primeArray[1] = true;
   }
 
   public long next() {
     pos++;
+    
+    if (pos >= primeArray.length) {
+    	return -1l;
+    }
+    
     while (primeArray[pos]) {
       pos++;
     }
