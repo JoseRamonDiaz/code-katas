@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.jrda.algorithms.tree_height.Node;
-import com.jrda.algorithms.tree_height.TreeHeightBFS;
-
 public class TreeHeightBFSTest {
 	@Test
 	public void test() {
