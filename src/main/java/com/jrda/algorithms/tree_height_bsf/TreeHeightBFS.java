@@ -3,7 +3,7 @@ package com.jrda.algorithms.tree_height_bsf;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class TreeHeight {
+public class TreeHeightBFS {
 	
 	public int height(Node node) {
 		if (node == null) 
