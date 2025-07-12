@@ -1,8 +1,11 @@
-package com.jrda.algorithms.tree_height_bsf;
+package com.jrda.algorithms.tree_height;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import com.jrda.algorithms.tree_height.Node;
+import com.jrda.algorithms.tree_height.TreeHeightDFS;
 
 public class TreeHeightDFSTest {
 	@Test

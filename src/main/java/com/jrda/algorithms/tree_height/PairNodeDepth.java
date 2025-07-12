@@ -1,4 +1,4 @@
-package com.jrda.algorithms.tree_height_bsf;
+package com.jrda.algorithms.tree_height;
 
 public class PairNodeDepth {
 	int depth;
