@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class PhoneDigitToLetterDFS {
 	private Map<String, List<String>> numberToLetters = Map.of(
-			"2",  List.of("a", "b", "c"),
-			"3",   List.of("d", "e", "f"), 
+			"2", List.of("a", "b", "c"),
+			"3", List.of("d", "e", "f"), 
 			"4", List.of("g", "h", "i")
 			);
 	
@@ -30,7 +30,7 @@ public class PhoneDigitToLetterDFS {
 		
 		for (String letter : numberToLetters.get(digit)) {
 			for (String singleComb : getCombinations(Arrays.copyOfRange(dialedDigits, 1, dialedDigits.length))) {
-			comb.add(letter + singleComb);
+				comb.add(letter + singleComb);
 			}
 		}
 		

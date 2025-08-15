@@ -5,12 +5,19 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class PhoneDigitToLetterDFSTest {
+	private PhoneDigitToLetterDFS dfs; 
+	
+	@Before
+	public void init() {
+		dfs = new PhoneDigitToLetterDFS();
+	}
+	
 	@Test
 	public void testNoDigit() {
-		PhoneDigitToLetterDFS dfs = new PhoneDigitToLetterDFS();
 		assertTrue(dfs.getCombinations(null).isEmpty());
 		assertTrue(dfs.getCombinations("").isEmpty());
 		assertTrue(dfs.getCombinations("1").isEmpty());
@@ -18,13 +25,11 @@ public class PhoneDigitToLetterDFSTest {
 	
 	@Test
 	public void testOneDigit() {
-		PhoneDigitToLetterDFS dfs = new PhoneDigitToLetterDFS();
 		assertEquals(List.of("a", "b", "c"), dfs.getCombinations("2"));
 	}
 	
 	@Test
 	public void testTwoDigits() {
-		PhoneDigitToLetterDFS dfs = new PhoneDigitToLetterDFS();
 		assertEquals(List.of(
 				"ad", "ae", "af",  
 				"bd", "be", "bf", 
@@ -33,7 +38,6 @@ public class PhoneDigitToLetterDFSTest {
 
 	@Test
 	public void testThreeDigit() {
-		PhoneDigitToLetterDFS dfs = new PhoneDigitToLetterDFS();
 		List<String> l = List.of(
 			    "adg", "adh", "adi",
 			    "aeg", "aeh", "aei",
