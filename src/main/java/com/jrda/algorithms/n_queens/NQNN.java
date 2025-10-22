@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NQNN {
-  private int[] queens;
-  private List<int[]> solutions;
-  private int n;
+  int[] queens;
+  List<int[]> solutions;
+  int n;
 
   public void solve(int n) {
     queens = new int[n];
@@ -34,9 +34,11 @@ public class NQNN {
       int prevCol = queens[prevRow];
       if (prevCol == col)
         return false;
+
       if (Math.abs(prevRow - row) == Math.abs(prevCol - col))
         return false;
     }
+
     return true;
   }
 
