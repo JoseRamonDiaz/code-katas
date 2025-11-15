@@ -32,13 +32,13 @@ public class NQNN {
   private boolean isSafe(int row, int col) {
     for (int prevRow = 0; prevRow < row; prevRow++) {
       int prevCol = queens[prevRow];
+
       if (prevCol == col)
         return false;
 
       if (Math.abs(prevRow - row) == Math.abs(prevCol - col))
         return false;
     }
-
     return true;
   }
 
