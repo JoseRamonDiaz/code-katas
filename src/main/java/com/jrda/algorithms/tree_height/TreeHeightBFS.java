@@ -10,23 +10,26 @@ public class TreeHeightBFS {
 			return 0;
 		
 		Queue<Node> q = new LinkedList<>();
+		node.lvl = 0;
 		q.offer(node);
-		int depth = 0;
+		int depth = -1;
 		
 		while (!q.isEmpty()) {
-			int elementsAtLvl = q.size();
 			Node current = q.poll();
 			
-			for (int i = 0; i < elementsAtLvl; i++) {
-				if (current.left != null)
-					q.offer(current.left);
-				
-				if (current.right != null)
-					q.offer(current.right);
+			if (current.left != null) {
+				current.left.lvl = current.lvl + 1;
+				q.offer(current.left);
+				if (depth < current.left.lvl)
+					depth = current.left.lvl;
 			}
-			
-			//increase the depth, because we processed a complete lvl
-			depth++;
+				
+			if (current.right != null) {
+				current.right.lvl = current.lvl + 1;
+				q.offer(current.right);
+				if (depth < current.right.lvl)
+					depth = current.right.lvl;
+			}
 		}
 		
 		return depth;

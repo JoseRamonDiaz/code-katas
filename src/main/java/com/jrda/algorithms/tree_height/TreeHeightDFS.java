@@ -8,8 +8,8 @@ public class TreeHeightDFS {
 			return 0;
 		
 		Stack<PairNodeDepth> s = new Stack<>();
-		s.push(new PairNodeDepth(root, 1));
-		int maxDepth = 1;
+		int maxDepth = 0;
+		s.push(new PairNodeDepth(root, maxDepth));
 		
 		while(!s.isEmpty()) {
 			PairNodeDepth pairND = s.pop();

@@ -9,9 +9,11 @@ public class TreeHeightBFSTest {
 	public void test() {
 		Node n = new Node(1);
 		n.left = new Node(2);
+		n.right = new Node(4);
 		n.left.left = new Node(3);
+		n.left.right = new Node(5);
 		
 		TreeHeightBFS th = new TreeHeightBFS();
-		assertEquals(3, th.height(n));
+		assertEquals(2, th.height(n));
 	}
 }

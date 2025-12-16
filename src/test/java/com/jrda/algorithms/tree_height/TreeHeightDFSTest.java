@@ -9,9 +9,11 @@ public class TreeHeightDFSTest {
 	public void test() {
 		Node n = new Node(1);
 		n.left = new Node(2);
+		n.right = new Node(4);
 		n.left.left = new Node(3);
+		n.left.right = new Node(5);
 		
 		TreeHeightDFS t = new TreeHeightDFS();
-		assertEquals(3, t.getDepth(n));
+		assertEquals(2, t.getDepth(n));
 	}
 }
