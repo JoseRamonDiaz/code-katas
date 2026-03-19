@@ -5,50 +5,39 @@ import java.util.List;
 
 public class MaxRowsCoveredByColumns {
 	private List<Integer> combination;
-	private List<List<Integer>> result;
 	private int col = 0;
 	private int toSelect = 0;
 	private int maxRowsCovered = 0;
+	private int[][] matrix;
 
 	public int maximumRows(int[][] matrix, int numSelect) {
 		maxRowsCovered = 0;
-		generateCombination(matrix[0].length, numSelect);
-
-		for (List<Integer> s : result) {
-			int numCoveredRows = 0;
-			for (int i = 0; i < matrix.length; i++) {
-				if (isCovered(matrix[i], s))
-					numCoveredRows++;
-			}
-			maxRowsCovered = Math.max(numCoveredRows, maxRowsCovered);
-		}
-
+		this.matrix = matrix;
+		combination = new ArrayList<>();
+		this.col = matrix[0].length;
+		this.toSelect = numSelect;
+		gen(0);
 		return maxRowsCovered;
 	}
 
-	private boolean isCovered(int[] row, List<Integer> s) {
+	private boolean isCovered(int[] row) {
 		for (int i = 0; i < row.length; i++) {
-			if (row[i] == 1 && !s.contains(i)) {
+			if (row[i] == 1 && !combination.contains(i)) {
 				return false;
 			}
 		}
-		
-		return true;
-	}
 
-	protected List<List<Integer>> generateCombination(int col, int toSelect) {
-		combination = new ArrayList<>();
-		result = new ArrayList<>();
-		this.col = col;
-		this.toSelect = toSelect;
-		gen(0);
-		System.out.println(result);
-		return result;
+		return true;
 	}
 
 	private void gen(int start) {
 		if (combination.size() == toSelect) {
-			result.add(new ArrayList<>(combination));
+			int numCoveredRows = 0;
+			for (int i = 0; i < matrix.length; i++) {
+				if (isCovered(matrix[i]))
+					numCoveredRows++;
+			}
+			maxRowsCovered = Math.max(numCoveredRows, maxRowsCovered);
 			return;
 		}
 

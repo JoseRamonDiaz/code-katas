@@ -6,14 +6,6 @@ import org.junit.Test;
 
 public class MaxRowsCoveredByColumnsTest {
 	@Test
-	public void testCombinations() {
-		MaxRowsCoveredByColumns mr = new MaxRowsCoveredByColumns();
-		assertEquals(6, mr.generateCombination(4, 2).size());
-		assertEquals(4, mr.generateCombination(4, 3).size());
-		assertEquals(4, mr.generateCombination(4, 1).size());
-	}
-	
-	@Test
 	public void testMaxRowsCovered() {
 		MaxRowsCoveredByColumns mr = new MaxRowsCoveredByColumns();
 		int[][] m = new int[][] {
